@@ -19,7 +19,7 @@ public class MachineXDB {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/machinex","root","");  
 
             Statement stmt = con.createStatement();  
-            ResultSet rs = stmt.executeQuery("SELECT * FROM geraete");  
+            ResultSet rs = stmt.executeQuery("SELECT * FROM geraete");  //z.B Informationen aus der Geraete-Datenbank auslesen.
            
             while(rs.next()){ 
                 System.out.println(rs.getString(1)+"   "+rs.getInt(2)+"   "+rs.getString(3)+"   "+rs.getString(4)+"   "+rs.getInt(5));  
