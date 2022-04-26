@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="718.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="342.0" fitWidth="337.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="398.0" prefWidth="410.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="190.0" fitWidth="190.0" layoutX="95.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/2.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="50.0" layoutY="177.0" text="Username" textFill="AQUAMARINE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="220.0" text="Passwort" textFill="AQUAMARINE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernamefield" layoutX="140.0" layoutY="175.0" />
+            <Button fx:id="buttonlogin" layoutX="165.0" layoutY="282.0" mnemonicParsing="false" style="-fx-background-color: #7FFFD4;" text="Log In" />
+            <PasswordField fx:id="passwortfield" layoutX="140.0" layoutY="219.0" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

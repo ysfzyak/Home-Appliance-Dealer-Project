@@ -2,7 +2,7 @@ package machinex;
 
 /**
  *
- * @author ysfzy
+ * @author ysfzyak
  */
 public class ServicePersonal extends Person{
  

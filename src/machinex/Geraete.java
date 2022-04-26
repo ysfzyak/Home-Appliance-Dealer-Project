@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author ysfzy
+ * @author ysfzyak
  */
 public class Geraete {
     
