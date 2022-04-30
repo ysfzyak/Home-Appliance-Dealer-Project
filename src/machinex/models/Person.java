@@ -1,4 +1,4 @@
-package machinex;
+package machinex.models;
 
 import java.util.Date;
 

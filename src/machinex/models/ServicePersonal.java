@@ -1,11 +1,11 @@
-package machinex;
+package machinex.models;
 
 /**
  *
  * @author ysfzyak
  */
-public class Aussendienstmitarbeiter extends Person{
-    
+public class ServicePersonal extends Person{
+ 
     protected String benutzerName;
     private String passwort;
     protected String geschlecht;

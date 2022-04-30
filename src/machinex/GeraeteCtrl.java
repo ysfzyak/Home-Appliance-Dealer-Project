@@ -1,5 +1,6 @@
 package machinex;
 
+import machinex.models.Geraete;
 import java.util.List;
 
 /**
