@@ -1,33 +1,15 @@
 package machinex;
 
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.sql.Connection;
-import java.sql.ResultSet; 
+import java.sql.DriverManager; 
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import machinex.models.Aussendienstmitarbeiter;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,20 +23,12 @@ public class MachineXDB {
             Class.forName("com.mysql.cj.jdbc.Driver");  
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/machinex","root","");  
             return con;
-            /*Statement stmt = con.createStatement();  
-            ResultSet rs = stmt.executeQuery("SELECT * FROM geraete");  //z.B Informationen aus der Geraete-Datenbank auslesen.
-           
-            while(rs.next()){ 
-                System.out.println(rs.getString(1)+"   "+rs.getInt(2)+"   "+rs.getString(3)+"   "+rs.getString(4)+"   "+rs.getInt(5));  
-                con.close();  
-            }*/
             
         }catch(ClassNotFoundException | SQLException e){ 
             System.out.println(e);
             return null;
         }  
     }
-    
     
     static Connection conn;
     static String driver = "com.mysql.cj.jdbc.Driver";
@@ -95,7 +69,7 @@ public class MachineXDB {
                         rs.getString("geschlecht"),
                         (Integer.parseInt(rs.getString("gehalt")))));               
             }
-        }catch(Exception e){
+        }catch(NumberFormatException | SQLException e){
             System.out.println(e);
         }
         return alist;

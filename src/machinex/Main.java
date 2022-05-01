@@ -1,14 +1,10 @@
 package machinex;
 
-import com.sun.javafx.logging.PlatformLogger.Level;
-import java.lang.System.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import java.io.IOException;
  
 /**
@@ -17,26 +13,15 @@ import java.io.IOException;
  */
 
 public class Main extends Application{
-
-    /*@Override
-    public void start(Stage primaryStage) throws Exception {
-        
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-     
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("MachineX");
-        primaryStage.show();
-       
-    }*/
-    
-    
+   
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("ManagerScreen.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("FirstScreen.fxml"));
+            //Parent parent = FXMLLoader.load(getClass().getResource("ManagerScreen.fxml"));
+            //Parent parent = FXMLLoader.load(getClass().getResource("MitarbeiterScreen.fxml"));
             Scene scene = new Scene(parent);
-            //primaryStage.setTitle("Manager-Optionen");
+            primaryStage.setTitle("MachineX");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch(IOException e){
@@ -48,5 +33,6 @@ public class Main extends Application{
         launch(args);
         MachineXDB x = new MachineXDB();
         x.getConnection();
-    }    
+    } 
+    
 }

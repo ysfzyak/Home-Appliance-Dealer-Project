@@ -9,54 +9,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="930.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="machinex.ManagerScreenController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="945.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="machinex.ManagerScreenController">
   <tabs>
       <Tab fx:id="mitarbeiterTab" text="Außendienstmitarbeiter">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="920.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="920.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="mitarbeiterTable" layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="917.0">
+                  <TableView fx:id="mitarbeiterTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                     <columns>
                       <TableColumn fx:id="aVornameCol" prefWidth="108.79998636245728" text="Vorname" />
                       <TableColumn fx:id="aNachnameCol" prefWidth="105.59998321533203" text="Nachname" />
                         <TableColumn fx:id="aTcNrCol" prefWidth="118.4000244140625" text="TC-Nummer" />
                         <TableColumn fx:id="aGeburtstagCol" prefWidth="99.2000732421875" text="Geburtstag" />
                         <TableColumn fx:id="aTelefonnummerCol" minWidth="15.0" prefWidth="115.19998168945312" text="Telefonnummer" />
-                        <TableColumn fx:id="aBenutzernameCol" minWidth="15.0" prefWidth="104.800048828125" text="Benutzername" />
-                        <TableColumn fx:id="aPasswortCol" prefWidth="100.7999267578125" text="Passwort" />
+                        <TableColumn fx:id="aBenutzernameCol" minWidth="15.0" prefWidth="114.39996337890625" text="Benutzername" />
+                        <TableColumn fx:id="aPasswortCol" prefWidth="101.59991455078125" text="Passwort" />
                         <TableColumn fx:id="aGeschlectCol" minWidth="15.0" prefWidth="83.2000732421875" text="Geschlecht" />
-                        <TableColumn fx:id="aGehaltCol" minWidth="15.0" prefWidth="77.60000000000002" text="Gehalt" />
+                        <TableColumn fx:id="aGehaltCol" minWidth="15.0" prefWidth="87.199951171875" text="Gehalt" />
                     </columns>
                   </TableView>
                   <Button fx:id="addMitarbeiterBtn" layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addMitarbeiter" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button fx:id="mitarbeiterRefreshBtn" layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                  <Button fx:id="mitarbeiterRefreshBtn" layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#editData" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button fx:id="mitarbeiterlöschenBtn" layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button fx:id="mitarbeiterlöschenBtn" layoutX="197.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteMitarbeiter" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txt_vorname" layoutX="295.0" layoutY="27.0" promptText="Vorname" />
+                  <TextField fx:id="txt_vorname" layoutX="295.0" layoutY="25.0" promptText="Vorname" />
                   <TextField fx:id="txt_nachname" layoutX="295.0" layoutY="65.0" promptText="Nachname" />
-                  <TextField fx:id="txt_tcnummer" layoutX="295.0" layoutY="103.0" promptText="TC-Nummer" />
-                  <TextField fx:id="txt_geburtstag" layoutX="465.0" layoutY="27.0" promptText="Geburtstag" />
+                  <TextField fx:id="txt_tcnummer" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer" />
+                  <TextField fx:id="txt_geburtstag" layoutX="465.0" layoutY="25.0" promptText="Geburtstag" />
                   <TextField fx:id="txt_telefonnummer" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer" />
-                  <TextField fx:id="txt_benutzername" layoutX="465.0" layoutY="103.0" promptText="Benutzername" />
-                  <TextField fx:id="txt_passwort" layoutX="632.0" layoutY="27.0" promptText="Passwort" />
-                  <TextField fx:id="txt_geschlecht" layoutX="632.0" layoutY="65.0" promptText="Geschlecht" />
-                  <TextField fx:id="txt_gehalt" layoutX="632.0" layoutY="103.0" promptText="Gehalt" />
+                  <TextField fx:id="txt_benutzername" layoutX="465.0" layoutY="105.0" promptText="Benutzername" />
+                  <TextField fx:id="txt_passwort" layoutX="635.0" layoutY="25.0" promptText="Passwort" />
+                  <TextField fx:id="txt_geschlecht" layoutX="635.0" layoutY="65.0" promptText="Geschlecht" />
+                  <TextField fx:id="txt_gehalt" layoutX="635.0" layoutY="105.0" promptText="Gehalt" />
                </children>
             </AnchorPane>
         </content>
       </Tab>
       <Tab text="Servicepersonal">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
                   <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
@@ -66,41 +66,49 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button fx:id="mitarbeiterlöschenBtn1" layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TableView fx:id="mitarbeiterTable1" layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="917.0">
+                  <TableView fx:id="personalTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn fx:id="aVornameCol1" prefWidth="108.79998636245728" text="Vorname" />
                         <TableColumn fx:id="aNachnameCol1" prefWidth="105.59998321533203" text="Nachname" />
                         <TableColumn fx:id="aTcNrCol1" prefWidth="140.0" text="TC-Nummer" />
                         <TableColumn fx:id="aGeburtstagCol1" prefWidth="104.0" text="Geburtstag" />
                         <TableColumn fx:id="aTelefonnummerCol1" minWidth="15.0" prefWidth="122.39999389648438" text="Telefonnummer" />
-                        <TableColumn fx:id="aBenutzernameCol1" minWidth="15.0" prefWidth="88.79998779296875" text="Benutzername" />
-                        <TableColumn fx:id="aPasswortCol1" prefWidth="81.60003662109375" text="Passwort" />
-                        <TableColumn fx:id="aGeschlectCol1" minWidth="15.0" prefWidth="83.2000732421875" text="Geschlecht" />
-                        <TableColumn fx:id="aGehaltCol1" minWidth="15.0" prefWidth="80.80007324218752" text="Gehalt" />
+                        <TableColumn fx:id="aBenutzernameCol1" minWidth="15.0" prefWidth="100.0" text="Benutzername" />
+                        <TableColumn fx:id="aPasswortCol1" prefWidth="91.199951171875" text="Passwort" />
+                        <TableColumn fx:id="aGeschlectCol1" minWidth="15.0" prefWidth="82.4000244140625" text="Geschlecht" />
+                        <TableColumn fx:id="aGehaltCol1" minWidth="15.0" prefWidth="81.5999755859375" text="Gehalt" />
                      </columns>
                   </TableView>
+                  <TextField fx:id="txt_vorname1" layoutX="295.0" layoutY="25.0" promptText="Vorname" />
+                  <TextField fx:id="txt_nachname1" layoutX="295.0" layoutY="65.0" promptText="Nachname" />
+                  <TextField fx:id="txt_tcnummer1" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer" />
+                  <TextField fx:id="txt_geburtstag1" layoutX="465.0" layoutY="25.0" promptText="Geburtstag" />
+                  <TextField fx:id="txt_telefonnummer1" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer" />
+                  <TextField fx:id="txt_benutzername1" layoutX="465.0" layoutY="105.0" promptText="Benutzername" />
+                  <TextField fx:id="txt_passwort1" layoutX="635.0" layoutY="25.0" promptText="Passwort" />
+                  <TextField fx:id="txt_geschlecht1" layoutX="635.0" layoutY="65.0" promptText="Geschlecht" />
+                  <TextField fx:id="txt_gehalt1" layoutX="635.0" layoutY="105.0" promptText="Gehalt" />
                </children>
             </AnchorPane>
         </content>
       </Tab>
       <Tab text="Kunde">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0">
+                  <TableView fx:id="kundeTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="95.19998931884766" text="Nachname" />
-                        <TableColumn prefWidth="172.0" text="TC-Nummer" />
+                        <TableColumn prefWidth="113.5999526977539" text="Nachname" />
+                        <TableColumn prefWidth="153.60003662109375" text="TC-Nummer" />
                         <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
-                        <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
+                        <TableColumn prefWidth="164.79998779296875" text="Telefonnummer" />
+                        <TableColumn prefWidth="275.20001220703125" text="Adresse" />
                      </columns>
                   </TableView>
                   <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -113,28 +121,32 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mitarbeiterlöschenBtn11" layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="txt_vorname2" layoutX="295.0" layoutY="25.0" promptText="Vorname" />
+                  <TextField fx:id="txt_nachname2" layoutX="295.0" layoutY="65.0" promptText="Nachname" />
+                  <TextField fx:id="txt_tcnummer2" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer" />
+                  <TextField fx:id="txt_geburtstag2" layoutX="465.0" layoutY="25.0" promptText="Geburtstag" />
+                  <TextField fx:id="txt_telefonnummer2" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer" />
+                  <TextField fx:id="txt_adresse" layoutX="465.0" layoutY="105.0" promptText="Adresse" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab text="Produkt">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0">
+                  <TableView fx:id="produktTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="95.19998931884766" text="Nachname" />
-                        <TableColumn prefWidth="172.0" text="TC-Nummer" />
-                        <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
-                        <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
+                        <TableColumn prefWidth="187.99999713897705" text="Modellname" />
+                        <TableColumn prefWidth="165.59996032714844" text="Preis" />
+                        <TableColumn prefWidth="149.60003662109375" text="Farbe" />
+                        <TableColumn prefWidth="246.4000244140625" text="Produktcode" />
+                        <TableColumn prefWidth="185.60003662109375" text="Garantie" />
                      </columns>
                   </TableView>
                   <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -147,30 +159,44 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="mitarbeiterlöschenBtn111" layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="txt_modellname" layoutX="295.0" layoutY="25.0" promptText="Modellname" />
+                  <TextField fx:id="txt_preis" layoutX="295.0" layoutY="65.0" promptText="Preis" />
+                  <TextField fx:id="txt_farbe" layoutX="295.0" layoutY="105.0" promptText="Farbe" />
+                  <TextField fx:id="txt_produktcode" layoutX="465.0" layoutY="25.0" promptText="Produktcode" />
+                  <TextField fx:id="txt_garantie" layoutX="465.0" layoutY="65.0" promptText="Garantie" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab text="Rechnung">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0">
+                  <TableView fx:id="rechnungTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="95.19998931884766" text="Nachname" />
-                        <TableColumn prefWidth="172.0" text="TC-Nummer" />
-                        <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
-                        <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
+                        <TableColumn prefWidth="293.59998178482056" text="Rechnung-No" />
+                        <TableColumn prefWidth="345.5999755859375" text="Produkt" />
+                        <TableColumn prefWidth="296.00006103515625" text="Kunde" />
                      </columns>
                   </TableView>
+                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="txt_rechnungno" layoutX="192.0" layoutY="40.0" promptText="Rechnung-No" />
+                  <TextField fx:id="txt_produktcode1" layoutX="192.0" layoutY="75.0" promptText="Produktcode" />
+                  <TextField fx:id="txt_tcnrkunde" layoutX="192.0" layoutY="110.0" promptText="TC-Nr von Kunde" />
                </children>
             </AnchorPane>
          </content>

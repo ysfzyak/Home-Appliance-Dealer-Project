@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package machinex;
 
-
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -18,22 +11,24 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import machinex.models.Aussendienstmitarbeiter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
- * @author ysfzy
+ * @author ysfzyak
  */
+
 public class ManagerScreenController implements Initializable {
     @FXML
     private TableView<Aussendienstmitarbeiter> mitarbeiterTable;
@@ -81,8 +76,7 @@ public class ManagerScreenController implements Initializable {
     private TextField txt_benutzername;
     @FXML 
     private TextField txt_passwort;
-    
-    
+
     ObservableList<Aussendienstmitarbeiter> listA;
     
     int index = -1;
@@ -108,16 +102,73 @@ public class ManagerScreenController implements Initializable {
             pst.execute();
             
             JOptionPane.showMessageDialog(null, "Aussendienstmitarbeiter wird hinzugefügt!");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+            updateTable();
+        }catch(HeadlessException | SQLException e){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
         }
         
     }
-    
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML
+    void getSelected(MouseEvent event){
+        index = mitarbeiterTable.getSelectionModel().getSelectedIndex();
+        if(index <= -1) return;
         
+        txt_vorname.setText(aVornameCol.getCellData(index).toString());
+        txt_nachname.setText(aNachnameCol.getCellData(index).toString());
+        txt_tcnummer.setText(aTcNrCol.getCellData(index).toString());
+        txt_geburtstag.setText(aGeburtstagCol.getCellData(index).toString());
+        txt_telefonnummer.setText(aTelefonnummerCol.getCellData(index).toString());
+        txt_benutzername.setText(aBenutzernameCol.getCellData(index).toString());
+        txt_passwort.setText(aPasswortCol.getCellData(index).toString());
+        txt_geschlecht.setText(aGeschlectCol.getCellData(index).toString());
+        txt_gehalt.setText(aGehaltCol.getCellData(index).toString());
+        
+    }
+    
+    private boolean checkEmpty(){
+        
+        if(txt_vorname.getText().isEmpty() |
+                txt_nachname.getText().isEmpty() |
+                txt_tcnummer.getText().isEmpty() |
+                txt_geburtstag.getText().isEmpty() |
+                txt_telefonnummer.getText().isEmpty() |
+                txt_benutzername.getText().isEmpty() |
+                txt_passwort.getText().isEmpty() |
+                txt_geschlecht.getText().isEmpty() |
+                txt_gehalt.getText().isEmpty()){
+            
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+            
+            return false;
+        }
+        return true;
+    }
+    
+    public void deleteMitarbeiter(){
+        con1 = MachineXDB.connect();
+        String sql = "DELETE FROM aussendienstmitarbeiter WHERE tcnummer=?";
+        
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_tcnummer.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Mitarbeiter wird gelöscht");
+            updateTable();
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void updateTable(){
+       
         aVornameCol.setCellValueFactory(new PropertyValueFactory<>("vorname"));
         aNachnameCol.setCellValueFactory(new PropertyValueFactory<>("nachname"));
         aTcNrCol.setCellValueFactory(new PropertyValueFactory<>("tcNummer"));
@@ -131,93 +182,46 @@ public class ManagerScreenController implements Initializable {
         listA = MachineXDB.getDataMitarbeiter();
         mitarbeiterTable.setItems(listA);
         
-        
-        
-        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    String query = null;
-    Connection con = null;
-    PreparedStatement prst = null;
-    ResultSet rset = null;
-    Aussendienstmitarbeiter mtr = null;
-    
-    ObservableList<Aussendienstmitarbeiter> MitarbeiterList = FXCollections.observableArrayList();
+    public void editData(){
+        if(checkEmpty()){
+        try{
+            con1 = MachineXDB.connect();
+            String value1 = txt_vorname.getText();
+            String value2 = txt_nachname.getText();
+            String value3 = txt_tcnummer.getText();
+            String value4 = txt_geburtstag.getText();
+            String value5 = txt_telefonnummer.getText();
+            String value6 = txt_benutzername.getText();
+            String value7 = txt_passwort.getText();
+            String value8 = txt_geschlecht.getText();
+            String value9 = txt_gehalt.getText();
+            
+            String sql = "UPDATE aussendienstmitarbeiter SET vorname='"+value1+"', "
+                    + "nachname='"+value2+"', "
+                    + "tcnummer='"+value3+"', "
+                    + "geburtstag='"+value4+"', "
+                    + "telefonnummer='"+value5+"', "
+                    + "benutzername='"+value6+"', "
+                    + "passwort='"+value7+"', "
+                    + "geschlecht='"+value8+"', "
+                    + "gehalt='"+value9+"' "
+                    + "WHERE tcnummer='"+value3+"' ";
+            
+            pst = con1.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Mitarbeiter wird aktualisiert");
+            updateTable();
+            
+            
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }}
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadDate();
-    } 
-    
-    @FXML
-    private void refreshTable(){
-        try {
-            MitarbeiterList.clear();
-            query = "SELECT * FROM `aussendienstmitarbeiter`";
-            prst = con.prepareStatement(query);
-            rset = prst.executeQuery();
-            
-            while(rset.next()){
-                MitarbeiterList.add(new Aussendienstmitarbeiter(
-                        rset.getString("vorname"),
-                        rset.getString("nachname"),
-                        rset.getString("tcnummer"),
-                        rset.getDate("geburtstag"),
-                        rset.getString("telefonnummer"),
-                        rset.getString("geschlecht"),
-                        rset.getInt("gehalt"),
-                        rset.getString("benutzername"),
-                        rset.getString("passwort")));
-                mitarbeiterTable.setItems(MitarbeiterList);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerScreenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        updateTable();
     }
-
-    private void loadDate(){
-    
-        con = MachineXDB.getConnection();
-        refreshTable();
-        
-        aVornameCol.setCellValueFactory(new PropertyValueFactory<>("vorname"));
-        aNachnameCol.setCellValueFactory(new PropertyValueFactory<>("nachname"));
-        aTcNrCol.setCellValueFactory(new PropertyValueFactory<>("tcNummer"));
-        aGeburtstagCol.setCellValueFactory(new PropertyValueFactory<>("geburtstag"));
-        aTelefonnummerCol.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
-        aBenutzernameCol.setCellValueFactory(new PropertyValueFactory<>("benutzername"));
-        aPasswortCol.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
-        aGeschlechtCol.setCellValueFactory(new PropertyValueFactory<>("geschlecht"));
-        aGehaltCol.setCellValueFactory(new PropertyValueFactory<>("gehalt"));
-    }
-    */
 }

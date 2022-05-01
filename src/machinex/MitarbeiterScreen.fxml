@@ -5,36 +5,54 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="machinex.ManagerScreenController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="machinex.MitarbeiterScreenController">
    <tabs>
       <Tab text="Kunde">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0">
+                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="95.19998931884766" text="Nachname" />
-                        <TableColumn prefWidth="172.0" text="TC-Nummer" />
-                        <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
-                        <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="89.60009765625" text="Gehalt" />
+                        <TableColumn prefWidth="107.9999771118164" text="Nachname" />
+                        <TableColumn prefWidth="131.20001220703125" text="TC-Nummer" />
+                        <TableColumn prefWidth="126.4000244140625" text="Geburtstag" />
+                        <TableColumn prefWidth="137.59994506835938" text="Telefonnummer" />
+                        <TableColumn prefWidth="230.39996337890625" text="Adresse" />
                      </columns>
                   </TableView>
-                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: green; -fx-background-color: white;" text="Hinzufügen" />
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: blue; -fx-background-color: white;" text="Aktualisieren" />
+                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button layoutX="195.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField layoutX="292.0" layoutY="34.0" promptText="Vorname" />
+                  <TextField layoutX="292.0" layoutY="73.0" promptText="Nachname" />
+                  <TextField layoutX="292.0" layoutY="116.0" promptText="TC-Nummer" />
+                  <TextField layoutX="469.0" layoutY="34.0" promptText="Geburtstag" />
+                  <TextField layoutX="469.0" layoutY="73.0" promptText="Telefonnummer" />
+                  <TextField layoutX="469.0" layoutY="116.0" promptText="Adresse" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab text="Produkt">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0">
+                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn prefWidth="106.39999198913574" text="Vorname" />
                         <TableColumn prefWidth="95.19998931884766" text="Nachname" />
@@ -42,20 +60,36 @@
                         <TableColumn prefWidth="120.0" text="Geburtstag" />
                         <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
                         <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="89.60009765625" text="Gehalt" />
+                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
                      </columns>
                   </TableView>
-                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: green; -fx-background-color: white;" text="Hinzufügen" />
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: blue; -fx-background-color: white;" text="Aktualisieren" />
+                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button layoutX="195.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField layoutX="275.0" layoutY="37.0" promptText="Modellname" />
+                  <TextField layoutX="275.0" layoutY="76.0" promptText="Preis" />
+                  <TextField layoutX="275.0" layoutY="115.0" promptText="Farbe" />
+                  <TextField layoutX="451.0" layoutY="37.0" promptText="Produktcode" />
+                  <TextField layoutX="451.0" layoutY="76.0" promptText="Garantie" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab text="Rechnung">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0">
+                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn prefWidth="106.39999198913574" text="Vorname" />
                         <TableColumn prefWidth="95.19998931884766" text="Nachname" />
@@ -63,11 +97,21 @@
                         <TableColumn prefWidth="120.0" text="Geburtstag" />
                         <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
                         <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="89.60009765625" text="Gehalt" />
+                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
                      </columns>
                   </TableView>
-                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: green; -fx-background-color: white;" text="Hinzufügen" />
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: blue; -fx-background-color: white;" text="Aktualisieren" />
+                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField layoutX="191.0" layoutY="29.0" promptText="Rechnung-No" />
+                  <TextField layoutX="191.0" layoutY="73.0" promptText="Produktcode" />
+                  <TextField layoutX="191.0" layoutY="116.0" promptText="TC-Nr von Kunde" />
                </children>
             </AnchorPane>
          </content>

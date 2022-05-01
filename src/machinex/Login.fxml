@@ -41,8 +41,9 @@
                </font>
             </Label>
             <TextField fx:id="usernamefield" layoutX="140.0" layoutY="175.0" />
-            <Button fx:id="buttonlogin" layoutX="165.0" layoutY="282.0" mnemonicParsing="false" style="-fx-background-color: #7FFFD4;" text="Log In" />
+            <Button fx:id="buttonlogin" layoutX="224.0" layoutY="283.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #7FFFD4;" text="Log In" />
             <PasswordField fx:id="passwortfield" layoutX="140.0" layoutY="219.0" />
+            <Button fx:id="buttonZurück" layoutX="140.0" layoutY="283.0" mnemonicParsing="false" onAction="#switchToFirstScene" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: red;" text="Zurück" />
          </children>
       </AnchorPane>
    </right>

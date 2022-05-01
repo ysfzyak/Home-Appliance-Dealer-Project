@@ -6,6 +6,7 @@ import java.util.ArrayList;
  *
  * @author ysfzyak
  */
+
 public class Geraete {
     
     protected String modellName;

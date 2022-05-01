@@ -6,6 +6,7 @@ import java.util.ArrayList;
  *
  * @author ysfzyak
  */
+
 public class Rechnung {
     
     protected String rechnungNo;
@@ -35,7 +36,5 @@ public class Rechnung {
     public ArrayList<Geraete> getVerkauft_list() {
         return verkauft_list;
     }
-    
-    
     
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
  *
  * @author ysfzyak
  */
+
 public class Kunde extends Person{
     
     protected String adresse;
