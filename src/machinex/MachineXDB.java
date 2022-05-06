@@ -2,8 +2,6 @@ package machinex;
 
 import java.sql.DriverManager; 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import machinex.models.Aussendienstmitarbeiter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,22 +33,6 @@ public class MachineXDB {
     static String url = "jdbc:mysql://localhost/machinex";
     static String uname = "root";
     static String pass = "";
-    
-    public Connection getConnection(){
-        if(conn == null){
-            try {
-                Class.forName(driver);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(MachineXDB.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                conn = DriverManager.getConnection(url,uname,pass);
-            } catch (SQLException ex) {
-                Logger.getLogger(MachineXDB.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        return conn;
-    }
     
     public static ObservableList<Aussendienstmitarbeiter> getDataMitarbeiter(){
         Connection con1 = connect();

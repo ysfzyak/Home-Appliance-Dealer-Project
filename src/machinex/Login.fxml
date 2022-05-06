@@ -30,20 +30,19 @@
                   <Image url="@../img/2.png" />
                </image>
             </ImageView>
-            <Label layoutX="50.0" layoutY="177.0" text="Username" textFill="AQUAMARINE">
+            <Label layoutX="55.0" layoutY="177.0" text="Username" textFill="AQUAMARINE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="50.0" layoutY="220.0" text="Passwort" textFill="AQUAMARINE">
+            <Label layoutX="55.0" layoutY="221.0" text="Passwort" textFill="AQUAMARINE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
             <TextField fx:id="usernamefield" layoutX="140.0" layoutY="175.0" />
-            <Button fx:id="buttonlogin" layoutX="224.0" layoutY="283.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #7FFFD4;" text="Log In" />
+            <Button fx:id="buttonlogin" layoutX="141.0" layoutY="274.0" mnemonicParsing="false" onAction="#login" prefHeight="26.5" prefWidth="149.6" style="-fx-background-color: #7FFFD4;" text="Log In" />
             <PasswordField fx:id="passwortfield" layoutX="140.0" layoutY="219.0" />
-            <Button fx:id="buttonZurück" layoutX="140.0" layoutY="283.0" mnemonicParsing="false" onAction="#switchToFirstScene" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: red;" text="Zurück" />
          </children>
       </AnchorPane>
    </right>

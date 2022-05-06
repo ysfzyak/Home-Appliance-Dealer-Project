@@ -17,9 +17,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("FirstScreen.fxml"));
-            //Parent parent = FXMLLoader.load(getClass().getResource("ManagerScreen.fxml"));
-            //Parent parent = FXMLLoader.load(getClass().getResource("MitarbeiterScreen.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene scene = new Scene(parent);
             primaryStage.setTitle("MachineX");
             primaryStage.setScene(scene);
@@ -31,8 +29,6 @@ public class Main extends Application{
     
     public static void main(String[] args) throws Exception {
         launch(args);
-        MachineXDB x = new MachineXDB();
-        x.getConnection();
     } 
     
 }
