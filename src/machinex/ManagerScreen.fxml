@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +16,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="920.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="mitarbeiterTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="mitarbeiterTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected1" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                     <columns>
                       <TableColumn fx:id="aVornameCol" prefWidth="108.79998636245728" text="Vorname" />
                       <TableColumn fx:id="aNachnameCol" prefWidth="105.59998321533203" text="Nachname" />
@@ -41,15 +42,42 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txt_vorname" layoutX="295.0" layoutY="25.0" promptText="Vorname" />
-                  <TextField fx:id="txt_nachname" layoutX="295.0" layoutY="65.0" promptText="Nachname" />
-                  <TextField fx:id="txt_tcnummer" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer" />
-                  <TextField fx:id="txt_geburtstag" layoutX="465.0" layoutY="25.0" promptText="Geburtstag" />
-                  <TextField fx:id="txt_telefonnummer" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer" />
-                  <TextField fx:id="txt_benutzername" layoutX="465.0" layoutY="105.0" promptText="Benutzername" />
-                  <TextField fx:id="txt_passwort" layoutX="635.0" layoutY="25.0" promptText="Passwort" />
-                  <TextField fx:id="txt_geschlecht" layoutX="635.0" layoutY="65.0" promptText="Geschlecht" />
-                  <TextField fx:id="txt_gehalt" layoutX="635.0" layoutY="105.0" promptText="Gehalt" />
+                  <TextField fx:id="txt_vorname" layoutX="295.0" layoutY="25.0" promptText="Vorname">
+                     <tooltip>
+                        <Tooltip fx:id="ttvorname" text="Vorname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_nachname" layoutX="295.0" layoutY="65.0" promptText="Nachname">
+                     <tooltip>
+                        <Tooltip fx:id="ttnachname" text="Nachname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_tcnummer" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer">
+                     <tooltip>
+                        <Tooltip fx:id="tttcnummer" text="TC-Nummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_geburtstag" layoutX="465.0" layoutY="25.0" promptText="Geburtstag">
+                     <tooltip>
+                        <Tooltip fx:id="ttgeburtstag" text="Geburtstag" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_telefonnummer" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer">
+                     <tooltip>
+                        <Tooltip fx:id="tttelefonnummer" text="Telefonnummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_benutzername" layoutX="465.0" layoutY="105.0" promptText="Benutzername">
+                     <tooltip>
+                        <Tooltip fx:id="ttbenutzername" text="Benutzername" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_passwort" layoutX="635.0" layoutY="25.0" promptText="Passwort">
+                     <tooltip>
+                        <Tooltip fx:id="ttpasswort" text="Passwort" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_geschlecht" layoutX="635.0" layoutY="65.0" promptText="Geschlecht">
+                     <tooltip>
+                        <Tooltip fx:id="ttgeschlecht" text="Geschlecht" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_gehalt" layoutX="635.0" layoutY="105.0" promptText="Gehalt">
+                     <tooltip>
+                        <Tooltip fx:id="ttgehalt" text="Gehalt" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
         </content>
@@ -58,7 +86,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addServicepersonal" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
@@ -84,15 +112,42 @@
                         <TableColumn fx:id="aGehaltCol1" minWidth="15.0" prefWidth="81.5999755859375" text="Gehalt" />
                      </columns>
                   </TableView>
-                  <TextField fx:id="txt_vorname1" layoutX="295.0" layoutY="25.0" promptText="Vorname" />
-                  <TextField fx:id="txt_nachname1" layoutX="295.0" layoutY="65.0" promptText="Nachname" />
-                  <TextField fx:id="txt_tcnummer1" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer" />
-                  <TextField fx:id="txt_geburtstag1" layoutX="465.0" layoutY="25.0" promptText="Geburtstag" />
-                  <TextField fx:id="txt_telefonnummer1" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer" />
-                  <TextField fx:id="txt_benutzername1" layoutX="465.0" layoutY="105.0" promptText="Benutzername" />
-                  <TextField fx:id="txt_passwort1" layoutX="635.0" layoutY="25.0" promptText="Passwort" />
-                  <TextField fx:id="txt_geschlecht1" layoutX="635.0" layoutY="65.0" promptText="Geschlecht" />
-                  <TextField fx:id="txt_gehalt1" layoutX="635.0" layoutY="105.0" promptText="Gehalt" />
+                  <TextField fx:id="txt_vorname1" layoutX="295.0" layoutY="25.0" promptText="Vorname">
+                     <tooltip>
+                        <Tooltip fx:id="ttvorname1" text="Vorname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_nachname1" layoutX="295.0" layoutY="65.0" promptText="Nachname">
+                     <tooltip>
+                        <Tooltip fx:id="ttnachname1" text="Nachname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_tcnummer1" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer">
+                     <tooltip>
+                        <Tooltip fx:id="tttcnummer1" text="TC-Nummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_geburtstag1" layoutX="465.0" layoutY="25.0" promptText="Geburtstag">
+                     <tooltip>
+                        <Tooltip fx:id="ttgeburtstag1" text="Geburtstag" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_telefonnummer1" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer">
+                     <tooltip>
+                        <Tooltip fx:id="tttelefonnummer1" text="Telefonnummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_benutzername1" layoutX="465.0" layoutY="105.0" promptText="Benutzername">
+                     <tooltip>
+                        <Tooltip fx:id="ttbenutzername1" text="Benutzername" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_passwort1" layoutX="635.0" layoutY="25.0" promptText="Passwort">
+                     <tooltip>
+                        <Tooltip fx:id="ttpasswort1" text="Passwort" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_geschlecht1" layoutX="635.0" layoutY="65.0" promptText="Geschlecht">
+                     <tooltip>
+                        <Tooltip fx:id="ttgeschlecht1" text="Geschlecht" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_gehalt1" layoutX="635.0" layoutY="105.0" promptText="Gehalt">
+                     <tooltip>
+                        <Tooltip fx:id="ttgehalt1" text="Gehalt" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
         </content>
@@ -126,12 +181,30 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txt_vorname2" layoutX="295.0" layoutY="25.0" promptText="Vorname" />
-                  <TextField fx:id="txt_nachname2" layoutX="295.0" layoutY="65.0" promptText="Nachname" />
-                  <TextField fx:id="txt_tcnummer2" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer" />
-                  <TextField fx:id="txt_geburtstag2" layoutX="465.0" layoutY="25.0" promptText="Geburtstag" />
-                  <TextField fx:id="txt_telefonnummer2" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer" />
-                  <TextField fx:id="txt_adresse" layoutX="465.0" layoutY="105.0" promptText="Adresse" />
+                  <TextField fx:id="txt_vorname2" layoutX="295.0" layoutY="25.0" promptText="Vorname">
+                     <tooltip>
+                        <Tooltip fx:id="ttvorname2" text="Vorname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_nachname2" layoutX="295.0" layoutY="65.0" promptText="Nachname">
+                     <tooltip>
+                        <Tooltip fx:id="ttnachname2" text="Nachname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_tcnummer2" layoutX="295.0" layoutY="105.0" promptText="TC-Nummer">
+                     <tooltip>
+                        <Tooltip fx:id="tttcnummer2" text="TC-Nummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_geburtstag2" layoutX="465.0" layoutY="25.0" promptText="Geburtstag">
+                     <tooltip>
+                        <Tooltip fx:id="ttgeburtstag2" text="Geburtstag" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_telefonnummer2" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer">
+                     <tooltip>
+                        <Tooltip fx:id="tttelefonnummer2" text="Telefonnummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_adresse" layoutX="465.0" layoutY="105.0" promptText="Adresse">
+                     <tooltip>
+                        <Tooltip fx:id="ttadresse" text="Adresse" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
          </content>
@@ -164,11 +237,26 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txt_modellname" layoutX="295.0" layoutY="25.0" promptText="Modellname" />
-                  <TextField fx:id="txt_preis" layoutX="295.0" layoutY="65.0" promptText="Preis" />
-                  <TextField fx:id="txt_farbe" layoutX="295.0" layoutY="105.0" promptText="Farbe" />
-                  <TextField fx:id="txt_produktcode" layoutX="465.0" layoutY="25.0" promptText="Produktcode" />
-                  <TextField fx:id="txt_garantie" layoutX="465.0" layoutY="65.0" promptText="Garantie" />
+                  <TextField fx:id="txt_modellname" layoutX="295.0" layoutY="25.0" promptText="Modellname">
+                     <tooltip>
+                        <Tooltip fx:id="ttmodellname" text="Modellname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_preis" layoutX="295.0" layoutY="65.0" promptText="Preis">
+                     <tooltip>
+                        <Tooltip fx:id="ttpreis" text="Preis" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_farbe" layoutX="295.0" layoutY="105.0" promptText="Farbe">
+                     <tooltip>
+                        <Tooltip fx:id="ttfarbe" text="Farbe" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_produktcode" layoutX="465.0" layoutY="25.0" promptText="Produktcode">
+                     <tooltip>
+                        <Tooltip fx:id="ttproduktcode" text="Produktcode" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_garantie" layoutX="465.0" layoutY="65.0" promptText="Garantie">
+                     <tooltip>
+                        <Tooltip fx:id="ttgarantie" text="Garantie" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
          </content>
@@ -194,9 +282,18 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txt_rechnungno" layoutX="192.0" layoutY="40.0" promptText="Rechnung-No" />
-                  <TextField fx:id="txt_produktcode1" layoutX="192.0" layoutY="75.0" promptText="Produktcode" />
-                  <TextField fx:id="txt_tcnrkunde" layoutX="192.0" layoutY="110.0" promptText="TC-Nr von Kunde" />
+                  <TextField fx:id="txt_rechnungno" layoutX="192.0" layoutY="34.0" promptText="Rechnung-No">
+                     <tooltip>
+                        <Tooltip fx:id="ttrechnungno" text="Rechnung-No" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_produktcode1" layoutX="192.0" layoutY="74.0" promptText="Produktcode">
+                     <tooltip>
+                        <Tooltip fx:id="ttproduktcode1" text="Produktcode" />
+                     </tooltip></TextField>
+                  <TextField fx:id="txt_tcnrkunde" layoutX="192.0" layoutY="114.0" promptText="TC-Nr von Kunde">
+                     <tooltip>
+                        <Tooltip fx:id="tttcnrkunde" text="TC-Nr von Kunde" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
          </content>

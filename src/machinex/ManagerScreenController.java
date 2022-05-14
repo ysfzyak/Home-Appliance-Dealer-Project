@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import machinex.models.Aussendienstmitarbeiter;
+import machinex.models.ServicePersonal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import javafx.scene.input.MouseEvent;
@@ -60,24 +62,138 @@ public class ManagerScreenController implements Initializable {
     private Button mitarbeiterlöschenBtn;
     @FXML 
     private TextField txt_vorname;
-    @FXML 
+    @FXML
+    private Tooltip ttvorname;
+    @FXML
     private TextField txt_nachname;
-    @FXML 
+    @FXML
+    private Tooltip ttnachname;
+    @FXML
     private TextField txt_tcnummer;
-    @FXML 
+    @FXML
+    private Tooltip tttcnummer;
+    @FXML
     private TextField txt_geburtstag;
-    @FXML 
+    @FXML
+    private Tooltip ttgeburtstag;
+    @FXML
     private TextField txt_telefonnummer;
-    @FXML 
-    private TextField txt_geschlecht;
-    @FXML 
-    private TextField txt_gehalt;
-    @FXML 
+    @FXML
+    private Tooltip tttelefonnummer;
+    @FXML
     private TextField txt_benutzername;
-    @FXML 
+    @FXML
+    private Tooltip ttbenutzername;
+    @FXML
     private TextField txt_passwort;
+    @FXML
+    private Tooltip ttpasswort;
+    @FXML
+    private TextField txt_geschlecht;
+    @FXML
+    private Tooltip ttgeschlecht;
+    @FXML
+    private TextField txt_gehalt;
+    @FXML
+    private Tooltip ttgehalt;
+    @FXML
+    private TextField txt_vorname1;
+    @FXML
+    private Tooltip ttvorname1;
+    @FXML
+    private TextField txt_nachname1;
+    @FXML
+    private Tooltip ttnachname1;
+    @FXML
+    private TextField txt_tcnummer1;
+    @FXML
+    private Tooltip tttcnummer1;
+    @FXML
+    private TextField txt_geburtstag1;
+    @FXML
+    private Tooltip ttgeburtstag1;
+    @FXML
+    private TextField txt_telefonnummer1;
+    @FXML
+    private Tooltip tttelefonnummer1;
+    @FXML
+    private TextField txt_benutzername1;
+    @FXML
+    private Tooltip ttbenutzername1;
+    @FXML
+    private TextField txt_passwort1;
+    @FXML
+    private Tooltip ttpasswort1;
+    @FXML
+    private TextField txt_geschlecht1;
+    @FXML
+    private Tooltip ttgeschlecht1;
+    @FXML
+    private TextField txt_gehalt1;
+    @FXML
+    private Tooltip ttgehalt1;
+    @FXML
+    private TextField txt_vorname2;
+    @FXML
+    private Tooltip ttvorname2;
+    @FXML
+    private TextField txt_nachname2;
+    @FXML
+    private Tooltip ttnachname2;
+    @FXML
+    private TextField txt_tcnummer2;
+    @FXML
+    private Tooltip tttcnummer2;
+    @FXML
+    private TextField txt_geburtstag2;
+    @FXML
+    private Tooltip ttgeburtstag2;
+    @FXML
+    private TextField txt_telefonnummer2;
+    @FXML
+    private Tooltip tttelefonnummer2;
+    @FXML
+    private TextField txt_adresse;
+    @FXML
+    private Tooltip ttadresse;
+    @FXML
+    private TextField txt_modellname;
+    @FXML
+    private Tooltip ttmodellname;
+    @FXML
+    private TextField txt_preis;
+    @FXML
+    private Tooltip ttpreis;
+    @FXML
+    private TextField txt_farbe;
+    @FXML
+    private Tooltip ttfarbe;
+    @FXML
+    private TextField txt_produktcode;
+    @FXML
+    private Tooltip ttproduktcode;
+    @FXML
+    private TextField txt_garantie;
+    @FXML
+    private Tooltip ttgarantie;
+    @FXML
+    private TextField txt_rechnungno;
+    @FXML
+    private Tooltip ttrechnungno;
+    @FXML
+    private TextField txt_produktcode1;
+    @FXML
+    private Tooltip ttproduktcode1;
+    @FXML
+    private TextField txt_tcnrkunde;
+    @FXML
+    private Tooltip tttcnrkunde;
 
-    ObservableList<Aussendienstmitarbeiter> listA;
+    ObservableList<Aussendienstmitarbeiter> list1;
+    ObservableList<ServicePersonal> list2;
+    ObservableList<Aussendienstmitarbeiter> list3;
+    ObservableList<Aussendienstmitarbeiter> list4;
+    ObservableList<Aussendienstmitarbeiter> list5;
     
     int index = -1;
     Connection con1 = null;
@@ -100,9 +216,10 @@ public class ManagerScreenController implements Initializable {
             pst.setString(9, txt_gehalt.getText());
             
             pst.execute();
-            
+           
             JOptionPane.showMessageDialog(null, "Aussendienstmitarbeiter wird hinzugefügt!");
             updateTable();
+            
         }catch(HeadlessException | SQLException e){
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -110,10 +227,41 @@ public class ManagerScreenController implements Initializable {
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
         }
-        
     }
+    
+    public void addServicepersonal(){
+        con1 = MachineXDB.connect();
+        String sql = "INSERT INTO servicepersonal(vorname,nachname,tcnummer,geburtstag,telefonnummer,benutzername,passwort,geschlecht,gehalt)values(?,?,?,?,?,?,?,?,?)";
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_vorname1.getText());
+            pst.setString(2, txt_nachname1.getText());
+            pst.setString(3, txt_tcnummer1.getText());
+            pst.setString(4, txt_geburtstag1.getText());
+            pst.setString(5, txt_telefonnummer1.getText());
+            pst.setString(6, txt_benutzername1.getText());
+            pst.setString(7, txt_passwort1.getText());
+            pst.setString(8, txt_geschlecht1.getText());
+            pst.setString(9, txt_gehalt1.getText());
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null, "Servicepersonal wird hinzugefügt!");
+            updateTable();
+            
+        }catch(HeadlessException | SQLException e){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+        }
+    
+    }
+    
+    
     @FXML
-    void getSelected(MouseEvent event){
+    void getSelected1(MouseEvent event){
         index = mitarbeiterTable.getSelectionModel().getSelectedIndex();
         if(index <= -1) return;
         
@@ -179,8 +327,8 @@ public class ManagerScreenController implements Initializable {
         aGeschlectCol.setCellValueFactory(new PropertyValueFactory<>("geschlecht"));
         aGehaltCol.setCellValueFactory(new PropertyValueFactory<>("gehalt"));
         
-        listA = MachineXDB.getDataMitarbeiter();
-        mitarbeiterTable.setItems(listA);
+        list1 = MachineXDB.getDataMitarbeiter();
+        mitarbeiterTable.setItems(list1);
         
     }
     
@@ -209,19 +357,62 @@ public class ManagerScreenController implements Initializable {
                     + "gehalt='"+value9+"' "
                     + "WHERE tcnummer='"+value3+"' ";
             
-            pst = con1.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Mitarbeiter wird aktualisiert");
-            updateTable();
-            
-            
+                pst = con1.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Mitarbeiter wird aktualisiert");
+                updateTable();
+                
+                
         }catch(HeadlessException | SQLException e){
             System.out.println(e);
         }}
     }
     
+    public void tooltip(Tooltip t){
+        txt_vorname.setTooltip(ttvorname);
+        txt_nachname.setTooltip(ttnachname);
+        txt_telefonnummer.setTooltip(tttelefonnummer);
+        txt_tcnummer.setTooltip(tttcnummer);
+        txt_geburtstag.setTooltip(ttgeburtstag);
+        txt_benutzername.setTooltip(ttbenutzername);
+        txt_passwort.setTooltip(ttpasswort);
+        txt_gehalt.setTooltip(ttgehalt);
+        txt_geschlecht.setTooltip(ttgeschlecht);
+        
+        txt_vorname1.setTooltip(ttvorname1);
+        txt_nachname1.setTooltip(ttnachname1);
+        txt_telefonnummer1.setTooltip(tttelefonnummer1);
+        txt_tcnummer1.setTooltip(tttcnummer1);
+        txt_geburtstag1.setTooltip(ttgeburtstag1);
+        txt_benutzername1.setTooltip(ttbenutzername1);
+        txt_passwort1.setTooltip(ttpasswort1);
+        txt_gehalt1.setTooltip(ttgehalt1);
+        txt_geschlecht1.setTooltip(ttgeschlecht1);
+        
+        txt_vorname2.setTooltip(ttvorname2);
+        txt_nachname2.setTooltip(ttnachname2);
+        txt_telefonnummer2.setTooltip(tttelefonnummer2);
+        txt_tcnummer2.setTooltip(tttcnummer2);
+        txt_geburtstag2.setTooltip(ttgeburtstag2);
+        txt_adresse.setTooltip(ttadresse);
+        
+        txt_modellname.setTooltip(ttmodellname);
+        txt_preis.setTooltip(ttpreis);
+        txt_garantie.setTooltip(ttgarantie);
+        txt_farbe.setTooltip(ttfarbe);
+        txt_produktcode.setTooltip(ttproduktcode);
+        
+        txt_rechnungno.setTooltip(ttrechnungno);
+        txt_produktcode1.setTooltip(ttproduktcode1);
+        txt_tcnrkunde.setTooltip(tttcnrkunde);
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateTable();
+        Tooltip t = new Tooltip();
+        tooltip(t);
+        
     }
 }
