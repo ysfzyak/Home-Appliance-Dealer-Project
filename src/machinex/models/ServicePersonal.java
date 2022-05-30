@@ -1,5 +1,7 @@
 package machinex.models;
 
+import java.util.Date;
+
 /**
  *
  * @author ysfzyak
@@ -10,6 +12,18 @@ public class ServicePersonal extends Person{
     private String passwort;
     protected String geschlecht;
     protected int gehalt;
+    
+    public ServicePersonal(String vorname, String nachname, String tcNummer, Date geburtstag, String telefonnummer, String benutzerName, String passwort, String geschlecht, int gehalt){
+        this.vorname = vorname;
+        this.nachname = nachname;
+        this.tcNummer = tcNummer;
+        this.geburtstag = geburtstag;
+        this.telefonnummer = telefonnummer;
+        this.benutzerName = benutzerName;
+        this.passwort = passwort;
+        this.geschlecht = geschlecht;
+        this.gehalt = gehalt;
+    }
 
     public void setBenutzerName(String benutzerName) {
         this.benutzerName = benutzerName;

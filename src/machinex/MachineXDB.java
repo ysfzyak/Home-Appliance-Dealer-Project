@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import machinex.models.ServicePersonal;
 
 /**
  *
@@ -55,6 +56,29 @@ public class MachineXDB {
             System.out.println(e);
         }
         return alist;
+    }
+    
+    public static ObservableList<ServicePersonal> getDataServicepersonal(){
+        Connection con2 = connect();
+        ObservableList<ServicePersonal> alist1 = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con2.prepareStatement("SELECT * FROM servicepersonal");
+            ResultSet rs1 = ps.executeQuery();
+            while (rs1.next()){   
+                alist1.add(new ServicePersonal(rs1.getString("vorname"), 
+                        rs1.getString("nachname"), 
+                        rs1.getString("tcnummer"), 
+                        rs1.getDate("geburtstag"), 
+                        rs1.getString("telefonnummer"),
+                        rs1.getString("benutzername"),
+                        rs1.getString("passwort"),
+                        rs1.getString("geschlecht"),
+                        (Integer.parseInt(rs1.getString("gehalt")))));               
+            }
+        }catch(NumberFormatException | SQLException e){
+            System.out.println(e);
+        }
+        return alist1;
     }
 }
 

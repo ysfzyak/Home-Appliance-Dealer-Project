@@ -24,6 +24,8 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import javafx.scene.input.MouseEvent;
+import machinex.models.Geraete;
+import machinex.models.Kunde;
 
 /**
  * FXML Controller class
@@ -34,6 +36,8 @@ import javafx.scene.input.MouseEvent;
 public class ManagerScreenController implements Initializable {
     @FXML
     private TableView<Aussendienstmitarbeiter> mitarbeiterTable;
+    @FXML
+    private TableView<ServicePersonal> personalTable;
     @FXML
     private Tab mitarbeiterTab;
     @FXML
@@ -54,6 +58,24 @@ public class ManagerScreenController implements Initializable {
     private TableColumn<Aussendienstmitarbeiter,String> aGeschlectCol;
     @FXML
     private TableColumn<Aussendienstmitarbeiter,Integer> aGehaltCol;
+    @FXML
+    private TableColumn<ServicePersonal,String> aVornameCol1;
+    @FXML
+    private TableColumn<ServicePersonal,String> aNachnameCol1;
+    @FXML
+    private TableColumn<ServicePersonal,String> aTcNrCol1;
+    @FXML
+    private TableColumn<ServicePersonal,Date> aGeburtstagCol1;
+    @FXML
+    private TableColumn<ServicePersonal,String> aTelefonnummerCol1;
+    @FXML
+    private TableColumn<ServicePersonal,String> aBenutzernameCol1;
+    @FXML
+    private TableColumn<ServicePersonal,String> aPasswortCol1;
+    @FXML
+    private TableColumn<ServicePersonal,String> aGeschlectCol1;
+    @FXML
+    private TableColumn<ServicePersonal,Integer> aGehaltCol1;
     @FXML
     private Button addMitarbeiterBtn;
     @FXML
@@ -191,9 +213,8 @@ public class ManagerScreenController implements Initializable {
 
     ObservableList<Aussendienstmitarbeiter> list1;
     ObservableList<ServicePersonal> list2;
-    ObservableList<Aussendienstmitarbeiter> list3;
-    ObservableList<Aussendienstmitarbeiter> list4;
-    ObservableList<Aussendienstmitarbeiter> list5;
+    ObservableList<Kunde> list3;
+    ObservableList<Geraete> list4;
     
     int index = -1;
     Connection con1 = null;
@@ -247,7 +268,7 @@ public class ManagerScreenController implements Initializable {
             pst.execute();
             
             JOptionPane.showMessageDialog(null, "Servicepersonal wird hinzugefügt!");
-            updateTable();
+            updateTable2();
             
         }catch(HeadlessException | SQLException e){
             Alert alert = new Alert(AlertType.ERROR);
@@ -259,8 +280,6 @@ public class ManagerScreenController implements Initializable {
     
     }
     
-    
-    @FXML
     void getSelected1(MouseEvent event){
         index = mitarbeiterTable.getSelectionModel().getSelectedIndex();
         if(index <= -1) return;
@@ -276,6 +295,22 @@ public class ManagerScreenController implements Initializable {
         txt_gehalt.setText(aGehaltCol.getCellData(index).toString());
         
     }
+
+    void getSelected2(MouseEvent event){
+        index = personalTable.getSelectionModel().getSelectedIndex();
+        if(index <= -1) return;
+        
+        txt_vorname1.setText(aVornameCol1.getCellData(index).toString());
+        txt_nachname1.setText(aNachnameCol1.getCellData(index).toString());
+        txt_tcnummer1.setText(aTcNrCol1.getCellData(index).toString());
+        txt_geburtstag1.setText(aGeburtstagCol1.getCellData(index).toString());
+        txt_telefonnummer1.setText(aTelefonnummerCol1.getCellData(index).toString());
+        txt_benutzername1.setText(aBenutzernameCol1.getCellData(index).toString());
+        txt_passwort1.setText(aPasswortCol1.getCellData(index).toString());
+        txt_geschlecht1.setText(aGeschlectCol1.getCellData(index).toString());
+        txt_gehalt1.setText(aGehaltCol1.getCellData(index).toString());
+        
+    }
     
     private boolean checkEmpty(){
         
@@ -288,6 +323,29 @@ public class ManagerScreenController implements Initializable {
                 txt_passwort.getText().isEmpty() |
                 txt_geschlecht.getText().isEmpty() |
                 txt_gehalt.getText().isEmpty()){
+            
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+            
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean checkEmpty2(){
+        
+        if(txt_vorname1.getText().isEmpty() |
+                txt_nachname1.getText().isEmpty() |
+                txt_tcnummer1.getText().isEmpty() |
+                txt_geburtstag1.getText().isEmpty() |
+                txt_telefonnummer1.getText().isEmpty() |
+                txt_benutzername1.getText().isEmpty() |
+                txt_passwort1.getText().isEmpty() |
+                txt_geschlecht1.getText().isEmpty() |
+                txt_gehalt1.getText().isEmpty()){
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -315,6 +373,21 @@ public class ManagerScreenController implements Initializable {
         }
     }
     
+    public void deleteServicepersonal(){
+        con1 = MachineXDB.connect();
+        String sql = "DELETE FROM servicepersonal WHERE tcnummer=?";
+        
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_tcnummer1.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Servicepersonal wird gelöscht");
+            updateTable2();
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }
+    }
+    
     public void updateTable(){
        
         aVornameCol.setCellValueFactory(new PropertyValueFactory<>("vorname"));
@@ -329,6 +402,23 @@ public class ManagerScreenController implements Initializable {
         
         list1 = MachineXDB.getDataMitarbeiter();
         mitarbeiterTable.setItems(list1);
+        
+    }
+    
+    public void updateTable2(){
+       
+        aVornameCol1.setCellValueFactory(new PropertyValueFactory<>("vorname"));
+        aNachnameCol1.setCellValueFactory(new PropertyValueFactory<>("nachname"));
+        aTcNrCol1.setCellValueFactory(new PropertyValueFactory<>("tcNummer"));
+        aGeburtstagCol1.setCellValueFactory(new PropertyValueFactory<>("geburtstag"));
+        aTelefonnummerCol1.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
+        aBenutzernameCol1.setCellValueFactory(new PropertyValueFactory<>("benutzerName"));
+        aPasswortCol1.setCellValueFactory(new PropertyValueFactory<>("passwort"));
+        aGeschlectCol1.setCellValueFactory(new PropertyValueFactory<>("geschlecht"));
+        aGehaltCol1.setCellValueFactory(new PropertyValueFactory<>("gehalt"));
+        
+        list2 = MachineXDB.getDataServicepersonal();
+        personalTable.setItems(list2);
         
     }
     
@@ -361,6 +451,42 @@ public class ManagerScreenController implements Initializable {
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Mitarbeiter wird aktualisiert");
                 updateTable();
+                
+                
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }}
+    }
+    
+    public void editData2(){
+        if(checkEmpty2()){
+        try{
+            con1 = MachineXDB.connect();
+            String value1 = txt_vorname1.getText();
+            String value2 = txt_nachname1.getText();
+            String value3 = txt_tcnummer1.getText();
+            String value4 = txt_geburtstag1.getText();
+            String value5 = txt_telefonnummer1.getText();
+            String value6 = txt_benutzername1.getText();
+            String value7 = txt_passwort1.getText();
+            String value8 = txt_geschlecht1.getText();
+            String value9 = txt_gehalt1.getText();
+            
+            String sql = "UPDATE servicepersonal SET vorname='"+value1+"', "
+                    + "nachname='"+value2+"', "
+                    + "tcnummer='"+value3+"', "
+                    + "geburtstag='"+value4+"', "
+                    + "telefonnummer='"+value5+"', "
+                    + "benutzername='"+value6+"', "
+                    + "passwort='"+value7+"', "
+                    + "geschlecht='"+value8+"', "
+                    + "gehalt='"+value9+"' "
+                    + "WHERE tcnummer='"+value3+"' ";
+            
+                pst = con1.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Servicepersonal wird aktualisiert");
+                updateTable2();
                 
                 
         }catch(HeadlessException | SQLException e){
@@ -411,6 +537,7 @@ public class ManagerScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateTable();
+        updateTable2();
         Tooltip t = new Tooltip();
         tooltip(t);
         

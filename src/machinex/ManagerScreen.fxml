@@ -54,9 +54,9 @@
                      <tooltip>
                         <Tooltip fx:id="tttcnummer" text="TC-Nummer" />
                      </tooltip></TextField>
-                  <TextField fx:id="txt_geburtstag" layoutX="465.0" layoutY="25.0" promptText="Geburtstag">
+                  <TextField fx:id="txt_geburtstag" layoutX="465.0" layoutY="25.0" promptText="Geburtstag(JJJJ-MM-TT)">
                      <tooltip>
-                        <Tooltip fx:id="ttgeburtstag" text="Geburtstag" />
+                        <Tooltip fx:id="ttgeburtstag" text="Geburtstag(JJJJ-MM-TT)" />
                      </tooltip></TextField>
                   <TextField fx:id="txt_telefonnummer" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer">
                      <tooltip>
@@ -90,16 +90,16 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#editData2" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteServicepersonal" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TableView fx:id="personalTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="personalTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected2" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn fx:id="aVornameCol1" prefWidth="108.79998636245728" text="Vorname" />
                         <TableColumn fx:id="aNachnameCol1" prefWidth="105.59998321533203" text="Nachname" />
@@ -124,9 +124,9 @@
                      <tooltip>
                         <Tooltip fx:id="tttcnummer1" text="TC-Nummer" />
                      </tooltip></TextField>
-                  <TextField fx:id="txt_geburtstag1" layoutX="465.0" layoutY="25.0" promptText="Geburtstag">
+                  <TextField fx:id="txt_geburtstag1" layoutX="465.0" layoutY="25.0" promptText="Geburtstag(JJJJ-MM-TT)">
                      <tooltip>
-                        <Tooltip fx:id="ttgeburtstag1" text="Geburtstag" />
+                        <Tooltip fx:id="ttgeburtstag1" text="Geburtstag(JJJJ-MM-TT)" />
                      </tooltip></TextField>
                   <TextField fx:id="txt_telefonnummer1" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer">
                      <tooltip>
@@ -193,9 +193,9 @@
                      <tooltip>
                         <Tooltip fx:id="tttcnummer2" text="TC-Nummer" />
                      </tooltip></TextField>
-                  <TextField fx:id="txt_geburtstag2" layoutX="465.0" layoutY="25.0" promptText="Geburtstag">
+                  <TextField fx:id="txt_geburtstag2" layoutX="465.0" layoutY="25.0" promptText="Geburtstag(JJJJ-MM-TT)">
                      <tooltip>
-                        <Tooltip fx:id="ttgeburtstag2" text="Geburtstag" />
+                        <Tooltip fx:id="ttgeburtstag2" text="Geburtstag(JJJJ-MM-TT)" />
                      </tooltip></TextField>
                   <TextField fx:id="txt_telefonnummer2" layoutX="465.0" layoutY="65.0" promptText="Telefonnummer">
                      <tooltip>
