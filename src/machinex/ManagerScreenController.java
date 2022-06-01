@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,8 +23,10 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import javafx.scene.input.MouseEvent;
+import static machinex.MachineXDB.connect;
 import machinex.models.Geraete;
 import machinex.models.Kunde;
+import machinex.models.Rechnung;
 
 /**
  * FXML Controller class
@@ -39,7 +40,11 @@ public class ManagerScreenController implements Initializable {
     @FXML
     private TableView<ServicePersonal> personalTable;
     @FXML
-    private Tab mitarbeiterTab;
+    private TableView<Kunde> kundeTable;
+    @FXML
+    private TableView<Geraete> produktTable;
+    @FXML
+    private TableView<Rechnung> rechnungTable;
     @FXML
     private TableColumn<Aussendienstmitarbeiter,String> aVornameCol;
     @FXML
@@ -76,6 +81,34 @@ public class ManagerScreenController implements Initializable {
     private TableColumn<ServicePersonal,String> aGeschlectCol1;
     @FXML
     private TableColumn<ServicePersonal,Integer> aGehaltCol1;
+    @FXML
+    private TableColumn<Kunde, String> aVornameCol2;
+    @FXML
+    private TableColumn<Kunde, String> aNachnameCol2;
+    @FXML
+    private TableColumn<Kunde, String> aTcNrCol2;
+    @FXML
+    private TableColumn<Kunde, Date> aGeburtstagCol2;
+    @FXML
+    private TableColumn<Kunde, String> aTelefonnummerCol2;
+    @FXML
+    private TableColumn<Kunde, String> aAdresseCol;
+    @FXML
+    private TableColumn<Geraete, String> aModellnameCol;
+    @FXML
+    private TableColumn<Geraete, Integer> aPreisCol;
+    @FXML
+    private TableColumn<Geraete, String> aFarbeCol;
+    @FXML
+    private TableColumn<Geraete, String> aProduktcodeCol;
+    @FXML
+    private TableColumn<Geraete, Integer> aGarantieCol;
+    @FXML
+    private TableColumn<Rechnung, String> aRechnungNoCol;
+    @FXML
+    private TableColumn<Rechnung, String> aProduktCol;
+    @FXML
+    private TableColumn<Rechnung, String> aKundeCol;
     @FXML
     private Button addMitarbeiterBtn;
     @FXML
@@ -215,6 +248,7 @@ public class ManagerScreenController implements Initializable {
     ObservableList<ServicePersonal> list2;
     ObservableList<Kunde> list3;
     ObservableList<Geraete> list4;
+    ObservableList<Rechnung> list5;
     
     int index = -1;
     Connection con1 = null;
@@ -277,10 +311,116 @@ public class ManagerScreenController implements Initializable {
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
         }
-    
     }
     
-    void getSelected1(MouseEvent event){
+    public void addKunde(){
+        con1 = MachineXDB.connect();
+        String sql = "INSERT INTO kunde(vorname,nachname,tcnummer,geburtstag,telefonnummer,adresse)values(?,?,?,?,?,?)";
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_vorname2.getText());
+            pst.setString(2, txt_nachname2.getText());
+            pst.setString(3, txt_tcnummer2.getText());
+            pst.setString(4, txt_geburtstag2.getText());
+            pst.setString(5, txt_telefonnummer2.getText());
+            pst.setString(6, txt_adresse.getText());
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null, "Kunde wird hinzugefügt!");
+            updateTable3();
+            
+        }catch(HeadlessException | SQLException e){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+        }
+    }
+    
+    public void addGeraete(){
+        con1 = MachineXDB.connect();
+        String sql = "INSERT INTO geraete(modellname,preis,farbe,produktcode,garantie)values(?,?,?,?,?)";
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_modellname.getText());
+            pst.setString(2, txt_preis.getText());
+            pst.setString(3, txt_farbe.getText());
+            pst.setString(4, txt_produktcode.getText());
+            pst.setString(5, txt_garantie.getText());
+            
+            pst.execute();
+            
+            JOptionPane.showMessageDialog(null, "Produkt wird hinzugefügt!");
+            updateTable4();
+            
+        }catch(HeadlessException | SQLException e){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+        }
+    }
+    
+    public void addRechnung(){
+        if(checkKunde() == true && checkProdukt() == true){
+            con1 = MachineXDB.connect();
+            String sql = "INSERT INTO rechnung(rechnungno,produkt,kunde)values(?,?,?)";
+            
+            try{
+                pst = con1.prepareStatement(sql);
+                pst.setString(1, txt_rechnungno.getText());
+                pst.setString(2, txt_produktcode1.getText());
+                pst.setString(3, txt_tcnrkunde.getText());
+                
+                pst.execute();
+                
+                JOptionPane.showMessageDialog(null, "Rechnung wird hinzugefügt!");
+                updateTable5();
+            
+        }catch(HeadlessException | SQLException e){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+        }
+        }
+    }
+    
+    public boolean checkKunde(){
+        Connection con = connect();
+        String tcnr = txt_tcnrkunde.getText();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM kunde WHERE tcnummer='" + tcnr + "'");
+            ResultSet rs5 = ps.executeQuery();
+            if(rs5.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return false;
+    }
+    
+    public boolean checkProdukt(){
+        Connection con = connect();
+        String prdktnr = txt_produktcode1.getText();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM geraete WHERE produktcode='" + prdktnr + "'");
+            ResultSet rs6 = ps.executeQuery();
+            if(rs6.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return false;
+    }
+     
+    public void getSelected1(MouseEvent event){
         index = mitarbeiterTable.getSelectionModel().getSelectedIndex();
         if(index <= -1) return;
         
@@ -296,7 +436,7 @@ public class ManagerScreenController implements Initializable {
         
     }
 
-    void getSelected2(MouseEvent event){
+    public void getSelected2(MouseEvent event){
         index = personalTable.getSelectionModel().getSelectedIndex();
         if(index <= -1) return;
         
@@ -309,6 +449,42 @@ public class ManagerScreenController implements Initializable {
         txt_passwort1.setText(aPasswortCol1.getCellData(index).toString());
         txt_geschlecht1.setText(aGeschlectCol1.getCellData(index).toString());
         txt_gehalt1.setText(aGehaltCol1.getCellData(index).toString());
+        
+    }
+    
+    public void getSelected3(MouseEvent event){
+        index = kundeTable.getSelectionModel().getSelectedIndex();
+        if(index <= -1) return;
+        
+        txt_vorname2.setText(aVornameCol2.getCellData(index).toString());
+        txt_nachname2.setText(aNachnameCol2.getCellData(index).toString());
+        txt_tcnummer2.setText(aTcNrCol2.getCellData(index).toString());
+        txt_geburtstag2.setText(aGeburtstagCol2.getCellData(index).toString());
+        txt_telefonnummer2.setText(aTelefonnummerCol2.getCellData(index).toString());
+        txt_adresse.setText(aAdresseCol.getCellData(index).toString());
+        
+    }
+    
+    public void getSelected4(MouseEvent event){
+        index = produktTable.getSelectionModel().getSelectedIndex();
+        if(index <= -1) return;
+        
+        txt_modellname.setText(aModellnameCol.getCellData(index).toString());
+        txt_preis.setText(aPreisCol.getCellData(index).toString());
+        txt_farbe.setText(aFarbeCol.getCellData(index).toString());
+        txt_produktcode.setText(aProduktcodeCol.getCellData(index).toString());
+        txt_garantie.setText(aGarantieCol.getCellData(index).toString());
+        
+    }
+    
+    public void getSelected5(MouseEvent event){
+        
+        index = rechnungTable.getSelectionModel().getSelectedIndex();
+        if(index <= -1) return;
+        
+        txt_rechnungno.setText(aRechnungNoCol.getCellData(index).toString());
+        txt_produktcode1.setText(aProduktCol.getCellData(index).toString());
+        txt_tcnrkunde.setText(aKundeCol.getCellData(index).toString());
         
     }
     
@@ -358,6 +534,62 @@ public class ManagerScreenController implements Initializable {
         return true;
     }
     
+    private boolean checkEmpty3(){
+        
+        if(txt_vorname2.getText().isEmpty() |
+                txt_nachname2.getText().isEmpty() |
+                txt_tcnummer2.getText().isEmpty() |
+                txt_geburtstag2.getText().isEmpty() |
+                txt_telefonnummer2.getText().isEmpty() |
+                txt_adresse.getText().isEmpty()){
+            
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+            
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean checkEmpty4(){
+        
+        if(txt_modellname.getText().isEmpty() |
+                txt_preis.getText().isEmpty() |
+                txt_farbe.getText().isEmpty() |
+                txt_produktcode.getText().isEmpty() |
+                txt_preis.getText().isEmpty()){
+            
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+            
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean checkEmpty5(){
+        
+        if(txt_rechnungno.getText().isEmpty() |
+                txt_produktcode1.getText().isEmpty() |
+                txt_tcnrkunde.getText().isEmpty()){
+            
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setContentText("Bitte füllen Sie alle Felder aus");
+            alert.showAndWait();
+            
+            return false;
+        }
+        return true;
+    }
+    
     public void deleteMitarbeiter(){
         con1 = MachineXDB.connect();
         String sql = "DELETE FROM aussendienstmitarbeiter WHERE tcnummer=?";
@@ -383,6 +615,51 @@ public class ManagerScreenController implements Initializable {
             pst.execute();
             JOptionPane.showMessageDialog(null, "Servicepersonal wird gelöscht");
             updateTable2();
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteKunde(){
+        con1 = MachineXDB.connect();
+        String sql = "DELETE FROM kunde WHERE tcnummer=?";
+        
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_tcnummer2.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Kunde wird gelöscht");
+            updateTable3();
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteGeraete(){
+        con1 = MachineXDB.connect();
+        String sql = "DELETE FROM geraete WHERE produktcode=?";
+        
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_produktcode.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Produkt wird gelöscht");
+            updateTable4();
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void deleteRechnung(){
+        con1 = MachineXDB.connect();
+        String sql = "DELETE FROM rechnung WHERE rechnungno=?";
+        
+        try{
+            pst = con1.prepareStatement(sql);
+            pst.setString(1, txt_rechnungno.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Rechnung wird gelöscht");
+            updateTable5();
         }catch(HeadlessException | SQLException e){
             System.out.println(e);
         }
@@ -420,6 +697,41 @@ public class ManagerScreenController implements Initializable {
         list2 = MachineXDB.getDataServicepersonal();
         personalTable.setItems(list2);
         
+    }
+    
+    public void updateTable3(){
+       
+        aVornameCol2.setCellValueFactory(new PropertyValueFactory<>("vorname"));
+        aNachnameCol2.setCellValueFactory(new PropertyValueFactory<>("nachname"));
+        aTcNrCol2.setCellValueFactory(new PropertyValueFactory<>("tcNummer"));
+        aGeburtstagCol2.setCellValueFactory(new PropertyValueFactory<>("geburtstag"));
+        aTelefonnummerCol2.setCellValueFactory(new PropertyValueFactory<>("telefonnummer"));
+        aAdresseCol.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        
+        list3 = MachineXDB.getDataKunde();
+        kundeTable.setItems(list3);
+    }
+    
+    public void updateTable4(){
+       
+        aModellnameCol.setCellValueFactory(new PropertyValueFactory<>("modellName"));
+        aPreisCol.setCellValueFactory(new PropertyValueFactory<>("preis"));
+        aFarbeCol.setCellValueFactory(new PropertyValueFactory<>("farbe"));
+        aProduktcodeCol.setCellValueFactory(new PropertyValueFactory<>("produktCode"));
+        aGarantieCol.setCellValueFactory(new PropertyValueFactory<>("garantie"));
+        
+        list4 = MachineXDB.getDataGeraete();
+        produktTable.setItems(list4);
+    }
+    
+    public void updateTable5(){
+       
+        aRechnungNoCol.setCellValueFactory(new PropertyValueFactory<>("rechnungNo"));
+        aProduktCol.setCellValueFactory(new PropertyValueFactory<>("produktCode"));
+        aKundeCol.setCellValueFactory(new PropertyValueFactory<>("tcNrKunde"));
+        
+        list5 = MachineXDB.getDataRechnung();
+        rechnungTable.setItems(list5);
     }
     
     public void editData(){
@@ -494,6 +806,64 @@ public class ManagerScreenController implements Initializable {
         }}
     }
     
+    public void editData3(){
+        if(checkEmpty3()){
+        try{
+            con1 = MachineXDB.connect();
+            String value1 = txt_vorname2.getText();
+            String value2 = txt_nachname2.getText();
+            String value3 = txt_tcnummer2.getText();
+            String value4 = txt_geburtstag2.getText();
+            String value5 = txt_telefonnummer2.getText();
+            String value6 = txt_adresse.getText();
+            
+            String sql = "UPDATE kunde SET vorname='"+value1+"', "
+                    + "nachname='"+value2+"', "
+                    + "tcnummer='"+value3+"', "
+                    + "geburtstag='"+value4+"', "
+                    + "telefonnummer='"+value5+"', "
+                    + "adresse='"+value6+"' "
+                    + "WHERE tcnummer='"+value3+"' ";
+            
+                pst = con1.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Kunde wird aktualisiert");
+                updateTable3();
+                
+                
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }}
+    }
+    
+    public void editData4(){
+        if(checkEmpty4()){
+        try{
+            con1 = MachineXDB.connect();
+            String value1 = txt_modellname.getText();
+            String value2 = txt_preis.getText();
+            String value3 = txt_farbe.getText();
+            String value4 = txt_produktcode.getText();
+            String value5 = txt_garantie.getText();
+            
+            String sql = "UPDATE geraete SET modellname='"+value1+"', "
+                    + "preis='"+value2+"', "
+                    + "farbe='"+value3+"', "
+                    + "produktcode='"+value4+"', "
+                    + "garantie='"+value5+"' "
+                    + "WHERE produktcode='"+value4+"' ";
+            
+                pst = con1.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Produkt wird aktualisiert");
+                updateTable4();
+                
+                
+        }catch(HeadlessException | SQLException e){
+            System.out.println(e);
+        }}
+    }
+    
     public void tooltip(Tooltip t){
         txt_vorname.setTooltip(ttvorname);
         txt_nachname.setTooltip(ttnachname);
@@ -538,6 +908,10 @@ public class ManagerScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         updateTable();
         updateTable2();
+        updateTable3();
+        updateTable4();
+        updateTable5();
+        
         Tooltip t = new Tooltip();
         tooltip(t);
         

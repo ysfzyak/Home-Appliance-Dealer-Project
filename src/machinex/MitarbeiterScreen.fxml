@@ -15,14 +15,14 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="kundeTable2" layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="107.9999771118164" text="Nachname" />
-                        <TableColumn prefWidth="131.20001220703125" text="TC-Nummer" />
-                        <TableColumn prefWidth="126.4000244140625" text="Geburtstag" />
-                        <TableColumn prefWidth="137.59994506835938" text="Telefonnummer" />
-                        <TableColumn prefWidth="230.39996337890625" text="Adresse" />
+                        <TableColumn fx:id="bVornameCol" prefWidth="106.39999198913574" text="Vorname" />
+                        <TableColumn fx:id="bNachnameCol" prefWidth="107.9999771118164" text="Nachname" />
+                        <TableColumn fx:id="bTcNrCol" prefWidth="131.20001220703125" text="TC-Nummer" />
+                        <TableColumn fx:id="bGeburtstagCol" prefWidth="126.4000244140625" text="Geburtstag" />
+                        <TableColumn fx:id="bTelefonnummerCol" prefWidth="137.59994506835938" text="Telefonnummer" />
+                        <TableColumn fx:id="bAdresseCol" prefWidth="230.39996337890625" text="Adresse" />
                      </columns>
                   </TableView>
                   <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -52,17 +52,6 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
-                     <columns>
-                        <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="95.19998931884766" text="Nachname" />
-                        <TableColumn prefWidth="172.0" text="TC-Nummer" />
-                        <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
-                        <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
-                     </columns>
-                  </TableView>
                   <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -81,6 +70,15 @@
                   <TextField layoutX="275.0" layoutY="115.0" promptText="Farbe" />
                   <TextField layoutX="451.0" layoutY="37.0" promptText="Produktcode" />
                   <TextField layoutX="451.0" layoutY="76.0" promptText="Garantie" />
+                  <TableView fx:id="produktTable2" layoutX="6.0" layoutY="185.0" onMouseClicked="#getSelected4" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
+                     <columns>
+                        <TableColumn prefWidth="176.00000619888306" text="Modellname" />
+                        <TableColumn prefWidth="150.4000244140625" text="Preis" />
+                        <TableColumn prefWidth="176.0" text="Farbe" />
+                        <TableColumn prefWidth="219.19998168945312" text="Produktcode" />
+                        <TableColumn prefWidth="118.4000244140625" text="Garantie" />
+                     </columns>
+                  </TableView>
                </children>
             </AnchorPane>
          </content>
@@ -89,15 +87,11 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="rechnungTable2" layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="95.19998931884766" text="Nachname" />
-                        <TableColumn prefWidth="172.0" text="TC-Nummer" />
-                        <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="155.99996948242188" text="Telefonnummer" />
-                        <TableColumn prefWidth="95.19989013671875" text="Geschlecht" />
-                        <TableColumn prefWidth="92.80002441406248" text="Gehalt" />
+                        <TableColumn prefWidth="278.3999695777893" text="Rechnung-No" />
+                        <TableColumn prefWidth="265.6000061035156" text="Produktcode" />
+                        <TableColumn prefWidth="295.99993896484375" text="TC-Nummer von Kunde" />
                      </columns>
                   </TableView>
                   <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">

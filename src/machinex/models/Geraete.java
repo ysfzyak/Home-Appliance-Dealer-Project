@@ -16,6 +16,14 @@ public class Geraete {
     protected int garantie;
     protected ArrayList < Rechnung > rechnung_list = new ArrayList();
 
+    public Geraete(String modellName, int preis, String farbe, String produktCode, int garantie) {
+        this.modellName = modellName;
+        this.preis = preis;
+        this.farbe = farbe;
+        this.produktCode = produktCode;
+        this.garantie = garantie;
+    }
+
     public void setRechnung_list(ArrayList<Rechnung> rechnung_list) {
         this.rechnung_list = rechnung_list;
     }

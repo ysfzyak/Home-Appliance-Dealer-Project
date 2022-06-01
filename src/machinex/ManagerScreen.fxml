@@ -156,27 +156,27 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="kundeTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="kundeTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected3" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn prefWidth="113.5999526977539" text="Nachname" />
-                        <TableColumn prefWidth="153.60003662109375" text="TC-Nummer" />
-                        <TableColumn prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn prefWidth="164.79998779296875" text="Telefonnummer" />
-                        <TableColumn prefWidth="275.20001220703125" text="Adresse" />
+                        <TableColumn fx:id="aVornameCol2" prefWidth="106.39999198913574" text="Vorname" />
+                        <TableColumn fx:id="aNachnameCol2" prefWidth="113.5999526977539" text="Nachname" />
+                        <TableColumn fx:id="aTcNrCol2" prefWidth="153.60003662109375" text="TC-Nummer" />
+                        <TableColumn fx:id="aGeburtstagCol2" prefWidth="120.0" text="Geburtstag" />
+                        <TableColumn fx:id="aTelefonnummerCol2" prefWidth="164.79998779296875" text="Telefonnummer" />
+                        <TableColumn fx:id="aAdresseCol" prefWidth="275.20001220703125" text="Adresse" />
                      </columns>
                   </TableView>
-                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addKunde" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#editData3" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteKunde" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -213,26 +213,26 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="produktTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="produktTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected4" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="187.99999713897705" text="Modellname" />
-                        <TableColumn prefWidth="165.59996032714844" text="Preis" />
-                        <TableColumn prefWidth="149.60003662109375" text="Farbe" />
-                        <TableColumn prefWidth="246.4000244140625" text="Produktcode" />
-                        <TableColumn prefWidth="185.60003662109375" text="Garantie" />
+                        <TableColumn fx:id="aModellnameCol" prefWidth="187.99999713897705" text="Modellname" />
+                        <TableColumn fx:id="aPreisCol" prefWidth="165.59996032714844" text="Preis" />
+                        <TableColumn fx:id="aFarbeCol" prefWidth="149.60003662109375" text="Farbe" />
+                        <TableColumn fx:id="aProduktcodeCol" prefWidth="246.4000244140625" text="Produktcode" />
+                        <TableColumn fx:id="aGarantieCol" prefWidth="185.60003662109375" text="Garantie" />
                      </columns>
                   </TableView>
-                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addGeraete" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#editData4" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="197.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteGeraete" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -265,19 +265,19 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="rechnungTable" layoutX="5.0" layoutY="185.0" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="rechnungTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected5" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="293.59998178482056" text="Rechnung-No" />
-                        <TableColumn prefWidth="345.5999755859375" text="Produkt" />
-                        <TableColumn prefWidth="296.00006103515625" text="Kunde" />
+                        <TableColumn fx:id="aRechnungNoCol" prefWidth="293.59998178482056" text="Rechnung-No" />
+                        <TableColumn fx:id="aProduktCol" prefWidth="345.5999755859375" text="Produktcode" />
+                        <TableColumn fx:id="aKundeCol" prefWidth="296.00006103515625" text="TC-Nummer von Kunde" />
                      </columns>
                   </TableView>
-                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addRechnung" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteRechnung" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

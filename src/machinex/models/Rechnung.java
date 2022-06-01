@@ -10,31 +10,39 @@ import java.util.ArrayList;
 public class Rechnung {
     
     protected String rechnungNo;
+    protected String tcNrKunde;
+    protected String produktCode;
     protected ArrayList < Kunde > besteller_list = new ArrayList();
     protected ArrayList < Geraete > verkauft_list = new ArrayList();
-
-    public void setRechnungNo(String rechnungNo) {
+    
+    public Rechnung(String rechnungNo, String produktCode, String tcNrKunde) {
         this.rechnungNo = rechnungNo;
-    }
-
-    public void setBesteller_list(ArrayList<Kunde> besteller_list) {
-        this.besteller_list = besteller_list;
-    }
-
-    public void setVerkauft_list(ArrayList<Geraete> verkauft_list) {
-        this.verkauft_list = verkauft_list;
+        this.produktCode = produktCode;
+        this.tcNrKunde = tcNrKunde;
     }
 
     public String getRechnungNo() {
         return rechnungNo;
     }
-
+    public String getTcNrKunde() {
+        return tcNrKunde;
+    }
+    public String getProduktCode() {
+        return produktCode;
+    }
     public ArrayList<Kunde> getBesteller_list() {
         return besteller_list;
     }
-
     public ArrayList<Geraete> getVerkauft_list() {
         return verkauft_list;
     }
-    
+    public void setRechnungNo(String rechnungNo) {
+        this.rechnungNo = rechnungNo;
+    }
+    public void setTcNrKunde(String tcNrKunde) {
+        this.tcNrKunde = tcNrKunde;
+    }
+    public void setProduktCode(String produktCode) {
+        this.produktCode = produktCode;
+    }
 }

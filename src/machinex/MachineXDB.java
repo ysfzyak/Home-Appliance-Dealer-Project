@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import machinex.models.Geraete;
+import machinex.models.Kunde;
+import machinex.models.Rechnung;
 import machinex.models.ServicePersonal;
 
 /**
@@ -34,9 +37,9 @@ public class MachineXDB {
     static String url = "jdbc:mysql://localhost/machinex";
     static String uname = "root";
     static String pass = "";
+    static Connection con1 = connect();
     
     public static ObservableList<Aussendienstmitarbeiter> getDataMitarbeiter(){
-        Connection con1 = connect();
         ObservableList<Aussendienstmitarbeiter> alist = FXCollections.observableArrayList();
         try{
             PreparedStatement ps = con1.prepareStatement("SELECT * FROM aussendienstmitarbeiter");
@@ -59,10 +62,9 @@ public class MachineXDB {
     }
     
     public static ObservableList<ServicePersonal> getDataServicepersonal(){
-        Connection con2 = connect();
         ObservableList<ServicePersonal> alist1 = FXCollections.observableArrayList();
         try{
-            PreparedStatement ps = con2.prepareStatement("SELECT * FROM servicepersonal");
+            PreparedStatement ps = con1.prepareStatement("SELECT * FROM servicepersonal");
             ResultSet rs1 = ps.executeQuery();
             while (rs1.next()){   
                 alist1.add(new ServicePersonal(rs1.getString("vorname"), 
@@ -80,6 +82,58 @@ public class MachineXDB {
         }
         return alist1;
     }
+    
+    public static ObservableList<Kunde> getDataKunde(){
+        ObservableList<Kunde> alist2 = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con1.prepareStatement("SELECT * FROM kunde");
+            ResultSet rs2 = ps.executeQuery();
+            while (rs2.next()){   
+                alist2.add(new Kunde(rs2.getString("vorname"), 
+                        rs2.getString("nachname"), 
+                        rs2.getString("tcnummer"), 
+                        rs2.getDate("geburtstag"), 
+                        rs2.getString("telefonnummer"),
+                        rs2.getString("adresse")));               
+            }
+        }catch(NumberFormatException | SQLException e){
+            System.out.println(e);
+        }
+        return alist2;
+    }
+    
+    public static ObservableList<Geraete> getDataGeraete(){
+        ObservableList<Geraete> alist3 = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con1.prepareStatement("SELECT * FROM geraete");
+            ResultSet rs3 = ps.executeQuery();
+            while (rs3.next()){   
+                alist3.add(new Geraete(rs3.getString("modellname"), 
+                        rs3.getInt("preis"), 
+                        rs3.getString("farbe"), 
+                        rs3.getString("produktcode"), 
+                        rs3.getInt("garantie")));               
+            }
+        }catch(NumberFormatException | SQLException e){
+            System.out.println(e);
+        }
+        return alist3;
+    }
+    
+    public static ObservableList<Rechnung> getDataRechnung(){
+        ObservableList<Rechnung> alist4 = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con1.prepareStatement("SELECT * FROM rechnung");
+            ResultSet rs4 = ps.executeQuery();
+            while (rs4.next()){   
+                alist4.add(new Rechnung(rs4.getString("rechnungno"), 
+                        rs4.getString("produkt"), 
+                        rs4.getString("kunde")));               
+            }
+        }catch(NumberFormatException | SQLException e){
+            System.out.println(e);
+        }
+        return alist4;
+    }
+    
 }
-
- 
