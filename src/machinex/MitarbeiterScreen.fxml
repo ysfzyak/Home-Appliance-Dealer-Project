@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,35 +16,53 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="kundeTable2" layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="kundeTable2" layoutX="6.0" layoutY="185.0" onMouseClicked="#getSelected1" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
                         <TableColumn fx:id="bVornameCol" prefWidth="106.39999198913574" text="Vorname" />
                         <TableColumn fx:id="bNachnameCol" prefWidth="107.9999771118164" text="Nachname" />
                         <TableColumn fx:id="bTcNrCol" prefWidth="131.20001220703125" text="TC-Nummer" />
                         <TableColumn fx:id="bGeburtstagCol" prefWidth="126.4000244140625" text="Geburtstag" />
                         <TableColumn fx:id="bTelefonnummerCol" prefWidth="137.59994506835938" text="Telefonnummer" />
-                        <TableColumn fx:id="bAdresseCol" prefWidth="230.39996337890625" text="Adresse" />
+                        <TableColumn fx:id="bAdresseCol" prefWidth="226.39999999999998" text="Adresse" />
                      </columns>
                   </TableView>
-                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" onAction="#addKunde" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#editData1" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="195.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="195.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteKunde" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="292.0" layoutY="34.0" promptText="Vorname" />
-                  <TextField layoutX="292.0" layoutY="73.0" promptText="Nachname" />
-                  <TextField layoutX="292.0" layoutY="116.0" promptText="TC-Nummer" />
-                  <TextField layoutX="469.0" layoutY="34.0" promptText="Geburtstag" />
-                  <TextField layoutX="469.0" layoutY="73.0" promptText="Telefonnummer" />
-                  <TextField layoutX="469.0" layoutY="116.0" promptText="Adresse" />
+                  <TextField fx:id="b_txt_vorname" layoutX="292.0" layoutY="34.0" promptText="Vorname">
+                     <tooltip>
+                        <Tooltip text="Vorname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_nachname" layoutX="292.0" layoutY="73.0" promptText="Nachname">
+                     <tooltip>
+                        <Tooltip text="Nachname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_tcnummer" layoutX="292.0" layoutY="116.0" promptText="TC-Nummer">
+                     <tooltip>
+                        <Tooltip text="TC-Nummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_geburtstag" layoutX="469.0" layoutY="34.0" promptText="Geburtstag">
+                     <tooltip>
+                        <Tooltip text="Geburtstag(JJJJ-MM-TT)" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_telefonnummer" layoutX="469.0" layoutY="73.0" promptText="Telefonnummer">
+                     <tooltip>
+                        <Tooltip text="Telefonnummer" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_adresse" layoutX="469.0" layoutY="116.0" promptText="Adresse">
+                     <tooltip>
+                        <Tooltip text="Adresse" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
          </content>
@@ -52,31 +71,46 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" onAction="#addGeraete" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#editData2" style="-fx-border-color: gray; -fx-background-color: blue;" text="Aktualisieren">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="195.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="195.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteGeraete" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="275.0" layoutY="37.0" promptText="Modellname" />
-                  <TextField layoutX="275.0" layoutY="76.0" promptText="Preis" />
-                  <TextField layoutX="275.0" layoutY="115.0" promptText="Farbe" />
-                  <TextField layoutX="451.0" layoutY="37.0" promptText="Produktcode" />
-                  <TextField layoutX="451.0" layoutY="76.0" promptText="Garantie" />
-                  <TableView fx:id="produktTable2" layoutX="6.0" layoutY="185.0" onMouseClicked="#getSelected4" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
+                  <TextField fx:id="b_txt_modellname" layoutX="275.0" layoutY="37.0" promptText="Modellname">
+                     <tooltip>
+                        <Tooltip text="Modellname" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_preis" layoutX="275.0" layoutY="76.0" promptText="Preis">
+                     <tooltip>
+                        <Tooltip text="Preis" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_farbe" layoutX="275.0" layoutY="115.0" promptText="Farbe">
+                     <tooltip>
+                        <Tooltip text="Farbe" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_produktcode" layoutX="451.0" layoutY="37.0" promptText="Produktcode">
+                     <tooltip>
+                        <Tooltip text="Produktcode" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_garantie" layoutX="451.0" layoutY="76.0" promptText="Garantie">
+                     <tooltip>
+                        <Tooltip text="Garantie" />
+                     </tooltip></TextField>
+                  <TableView fx:id="produktTable2" layoutX="6.0" layoutY="185.0" onMouseClicked="#getSelected2" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="176.00000619888306" text="Modellname" />
-                        <TableColumn prefWidth="150.4000244140625" text="Preis" />
-                        <TableColumn prefWidth="176.0" text="Farbe" />
-                        <TableColumn prefWidth="219.19998168945312" text="Produktcode" />
-                        <TableColumn prefWidth="118.4000244140625" text="Garantie" />
+                        <TableColumn fx:id="bModellnameCol" prefWidth="176.00000619888306" text="Modellname" />
+                        <TableColumn fx:id="bPreisCol" prefWidth="150.4000244140625" text="Preis" />
+                        <TableColumn fx:id="bFarbeCol" prefWidth="176.0" text="Farbe" />
+                        <TableColumn fx:id="bProduktcodeCol" prefWidth="219.19998168945312" text="Produktcode" />
+                        <TableColumn fx:id="bGarantieCol" prefWidth="114.39999999999998" text="Garantie" />
                      </columns>
                   </TableView>
                </children>
@@ -87,25 +121,34 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #d5d5d5;">
                <children>
-                  <TableView fx:id="rechnungTable2" layoutX="6.0" layoutY="185.0" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
+                  <TableView fx:id="rechnungTable2" layoutX="6.0" layoutY="185.0" onMouseClicked="#getSelected3" prefHeight="291.0" prefWidth="838.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn prefWidth="278.3999695777893" text="Rechnung-No" />
-                        <TableColumn prefWidth="265.6000061035156" text="Produktcode" />
-                        <TableColumn prefWidth="295.99993896484375" text="TC-Nummer von Kunde" />
+                        <TableColumn fx:id="bRechnungnoCol" prefWidth="278.3999695777893" text="Rechnung-No" />
+                        <TableColumn fx:id="bProduktcodeCol1" prefWidth="265.6000061035156" text="Produktcode" />
+                        <TableColumn fx:id="bTcnrKundeCol" prefWidth="295.99993896484375" text="TC-Nummer von Kunde" />
                      </columns>
                   </TableView>
-                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
+                  <Button layoutX="7.0" layoutY="142.0" mnemonicParsing="false" onAction="#addRechnung" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
+                  <Button layoutX="97.0" layoutY="142.0" mnemonicParsing="false" onAction="#deleteRechnung" style="-fx-border-color: gray; -fx-background-color: red;" text="Löschen">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <TextField layoutX="191.0" layoutY="29.0" promptText="Rechnung-No" />
-                  <TextField layoutX="191.0" layoutY="73.0" promptText="Produktcode" />
-                  <TextField layoutX="191.0" layoutY="116.0" promptText="TC-Nr von Kunde" />
+                  <TextField fx:id="b_txt_rechnungno" layoutX="191.0" layoutY="29.0" promptText="Rechnung-No">
+                     <tooltip>
+                        <Tooltip text="Rechnung-No" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_produktcode1" layoutX="191.0" layoutY="73.0" promptText="Produktcode">
+                     <tooltip>
+                        <Tooltip text="Produktcode" />
+                     </tooltip></TextField>
+                  <TextField fx:id="b_txt_tcnrkunde" layoutX="191.0" layoutY="116.0" promptText="TC-Nr von Kunde">
+                     <tooltip>
+                        <Tooltip text="TC-Nummer von Kunde" />
+                     </tooltip></TextField>
                </children>
             </AnchorPane>
          </content>

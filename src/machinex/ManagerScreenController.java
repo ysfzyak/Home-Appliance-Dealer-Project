@@ -109,12 +109,6 @@ public class ManagerScreenController implements Initializable {
     private TableColumn<Rechnung, String> aProduktCol;
     @FXML
     private TableColumn<Rechnung, String> aKundeCol;
-    @FXML
-    private Button addMitarbeiterBtn;
-    @FXML
-    private Button mitarbeiterRefreshBtn;
-    @FXML
-    private Button mitarbeiterlöschenBtn;
     @FXML 
     private TextField txt_vorname;
     @FXML
@@ -573,23 +567,6 @@ public class ManagerScreenController implements Initializable {
         return true;
     }
     
-    private boolean checkEmpty5(){
-        
-        if(txt_rechnungno.getText().isEmpty() |
-                txt_produktcode1.getText().isEmpty() |
-                txt_tcnrkunde.getText().isEmpty()){
-            
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
-            alert.setContentText("Bitte füllen Sie alle Felder aus");
-            alert.showAndWait();
-            
-            return false;
-        }
-        return true;
-    }
-    
     public void deleteMitarbeiter(){
         con1 = MachineXDB.connect();
         String sql = "DELETE FROM aussendienstmitarbeiter WHERE tcnummer=?";
@@ -864,46 +841,6 @@ public class ManagerScreenController implements Initializable {
         }}
     }
     
-    public void tooltip(Tooltip t){
-        txt_vorname.setTooltip(ttvorname);
-        txt_nachname.setTooltip(ttnachname);
-        txt_telefonnummer.setTooltip(tttelefonnummer);
-        txt_tcnummer.setTooltip(tttcnummer);
-        txt_geburtstag.setTooltip(ttgeburtstag);
-        txt_benutzername.setTooltip(ttbenutzername);
-        txt_passwort.setTooltip(ttpasswort);
-        txt_gehalt.setTooltip(ttgehalt);
-        txt_geschlecht.setTooltip(ttgeschlecht);
-        
-        txt_vorname1.setTooltip(ttvorname1);
-        txt_nachname1.setTooltip(ttnachname1);
-        txt_telefonnummer1.setTooltip(tttelefonnummer1);
-        txt_tcnummer1.setTooltip(tttcnummer1);
-        txt_geburtstag1.setTooltip(ttgeburtstag1);
-        txt_benutzername1.setTooltip(ttbenutzername1);
-        txt_passwort1.setTooltip(ttpasswort1);
-        txt_gehalt1.setTooltip(ttgehalt1);
-        txt_geschlecht1.setTooltip(ttgeschlecht1);
-        
-        txt_vorname2.setTooltip(ttvorname2);
-        txt_nachname2.setTooltip(ttnachname2);
-        txt_telefonnummer2.setTooltip(tttelefonnummer2);
-        txt_tcnummer2.setTooltip(tttcnummer2);
-        txt_geburtstag2.setTooltip(ttgeburtstag2);
-        txt_adresse.setTooltip(ttadresse);
-        
-        txt_modellname.setTooltip(ttmodellname);
-        txt_preis.setTooltip(ttpreis);
-        txt_garantie.setTooltip(ttgarantie);
-        txt_farbe.setTooltip(ttfarbe);
-        txt_produktcode.setTooltip(ttproduktcode);
-        
-        txt_rechnungno.setTooltip(ttrechnungno);
-        txt_produktcode1.setTooltip(ttproduktcode1);
-        txt_tcnrkunde.setTooltip(tttcnrkunde);
-        
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         updateTable();
@@ -911,9 +848,5 @@ public class ManagerScreenController implements Initializable {
         updateTable3();
         updateTable4();
         updateTable5();
-        
-        Tooltip t = new Tooltip();
-        tooltip(t);
-        
     }
 }
