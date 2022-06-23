@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -37,14 +36,7 @@ public class LoginController implements Initializable {
     @FXML
     private TextField usernamefield;
     @FXML
-    private Button buttonlogin;
-    @FXML
     private PasswordField passwortfield;
-    
-
-    /**
-     * Initializes the controller class.
-     */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,6 +65,14 @@ public class LoginController implements Initializable {
     
     public void switchToMitarbeiterScene(ActionEvent event) throws IOException {
          root = FXMLLoader.load(getClass().getResource("MitarbeiterScreen.fxml"));
+         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+         scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
+    }
+    
+    public void switchToServicePersonalScene(ActionEvent event) throws IOException {
+         root = FXMLLoader.load(getClass().getResource("ServicePersonalScreen.fxml"));
          stage = (Stage)((Node)event.getSource()).getScene().getWindow();
          scene = new Scene(root);
          stage.setScene(scene);
@@ -132,7 +132,7 @@ public class LoginController implements Initializable {
                     alert.setHeaderText("Als Servicepersonal eingeloggt.");
                     alert.setContentText("Willkommen Sie " + usernamefield.getText() + "!");
                     alert.showAndWait();
-                    switchToManagerScene(event);
+                    switchToServicePersonalScene(event);
                 }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");

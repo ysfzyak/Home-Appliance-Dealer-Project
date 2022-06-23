@@ -6,8 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import javafx.scene.paint.Color;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -19,7 +17,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("MitarbeiterScreen.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene scene = new Scene(parent);
             primaryStage.setTitle("MachineX");
             primaryStage.setScene(scene);

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="945.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="machinex.ManagerScreenController">
   <tabs>
@@ -18,15 +19,15 @@
                <children>
                   <TableView fx:id="mitarbeiterTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected1" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                     <columns>
-                      <TableColumn fx:id="aVornameCol" prefWidth="108.79998636245728" text="Vorname" />
-                      <TableColumn fx:id="aNachnameCol" prefWidth="105.59998321533203" text="Nachname" />
-                        <TableColumn fx:id="aTcNrCol" prefWidth="118.4000244140625" text="TC-Nummer" />
-                        <TableColumn fx:id="aGeburtstagCol" prefWidth="99.2000732421875" text="Geburtstag" />
-                        <TableColumn fx:id="aTelefonnummerCol" minWidth="15.0" prefWidth="115.19998168945312" text="Telefonnummer" />
-                        <TableColumn fx:id="aBenutzernameCol" minWidth="15.0" prefWidth="114.39996337890625" text="Benutzername" />
-                        <TableColumn fx:id="aPasswortCol" prefWidth="101.59991455078125" text="Passwort" />
-                        <TableColumn fx:id="aGeschlectCol" minWidth="15.0" prefWidth="83.2000732421875" text="Geschlecht" />
-                        <TableColumn fx:id="aGehaltCol" minWidth="15.0" prefWidth="87.199951171875" text="Gehalt" />
+                      <TableColumn fx:id="aVornameCol" prefWidth="108.79998636245728" text="1.Vorname" />
+                      <TableColumn fx:id="aNachnameCol" prefWidth="105.59998321533203" text="2.Nachname" />
+                        <TableColumn fx:id="aTcNrCol" prefWidth="118.4000244140625" text="3.TC-Nummer" />
+                        <TableColumn fx:id="aGeburtstagCol" prefWidth="99.2000732421875" text="4.Geburtstag" />
+                        <TableColumn fx:id="aTelefonnummerCol" minWidth="15.0" prefWidth="115.19998168945312" text="5.Telefonnummer" />
+                        <TableColumn fx:id="aBenutzernameCol" minWidth="15.0" prefWidth="114.39996337890625" text="6.Benutzername" />
+                        <TableColumn fx:id="aPasswortCol" prefWidth="101.59991455078125" text="7.Passwort" />
+                        <TableColumn fx:id="aGeschlectCol" minWidth="15.0" prefWidth="83.2000732421875" text="8.Geschlecht" />
+                        <TableColumn fx:id="aGehaltCol" minWidth="15.0" prefWidth="87.199951171875" text="9.Gehalt" />
                     </columns>
                   </TableView>
                   <Button fx:id="addMitarbeiterBtn" layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addMitarbeiter" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -78,6 +79,15 @@
                      <tooltip>
                         <Tooltip fx:id="ttgehalt" text="Gehalt" />
                      </tooltip></TextField>
+                  <Text layoutX="285.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." />
+                  <Text layoutX="285.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." />
+                  <Text layoutX="285.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." />
+                  <Text layoutX="457.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." />
+                  <Text layoutX="457.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." />
+                  <Text layoutX="457.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6." />
+                  <Text layoutX="627.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7." />
+                  <Text layoutX="627.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8." />
+                  <Text layoutX="627.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9." />
                </children>
             </AnchorPane>
         </content>
@@ -101,15 +111,15 @@
                   </Button>
                   <TableView fx:id="personalTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected2" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn fx:id="aVornameCol1" prefWidth="108.79998636245728" text="Vorname" />
-                        <TableColumn fx:id="aNachnameCol1" prefWidth="105.59998321533203" text="Nachname" />
-                        <TableColumn fx:id="aTcNrCol1" prefWidth="140.0" text="TC-Nummer" />
-                        <TableColumn fx:id="aGeburtstagCol1" prefWidth="104.0" text="Geburtstag" />
-                        <TableColumn fx:id="aTelefonnummerCol1" minWidth="15.0" prefWidth="122.39999389648438" text="Telefonnummer" />
-                        <TableColumn fx:id="aBenutzernameCol1" minWidth="15.0" prefWidth="100.0" text="Benutzername" />
-                        <TableColumn fx:id="aPasswortCol1" prefWidth="91.199951171875" text="Passwort" />
-                        <TableColumn fx:id="aGeschlectCol1" minWidth="15.0" prefWidth="82.4000244140625" text="Geschlecht" />
-                        <TableColumn fx:id="aGehaltCol1" minWidth="15.0" prefWidth="81.5999755859375" text="Gehalt" />
+                        <TableColumn fx:id="aVornameCol1" prefWidth="108.79998636245728" text="1.Vorname" />
+                        <TableColumn fx:id="aNachnameCol1" prefWidth="105.59998321533203" text="2.Nachname" />
+                        <TableColumn fx:id="aTcNrCol1" prefWidth="140.0" text="3.TC-Nummer" />
+                        <TableColumn fx:id="aGeburtstagCol1" prefWidth="97.5999755859375" text="4.Geburtstag" />
+                        <TableColumn fx:id="aTelefonnummerCol1" minWidth="15.0" prefWidth="123.20001220703125" text="5.Telefonnummer" />
+                        <TableColumn fx:id="aBenutzernameCol1" minWidth="15.0" prefWidth="106.4000244140625" text="6.Benutzername" />
+                        <TableColumn fx:id="aPasswortCol1" prefWidth="91.199951171875" text="7.Passwort" />
+                        <TableColumn fx:id="aGeschlectCol1" minWidth="15.0" prefWidth="82.4000244140625" text="8.Geschlecht" />
+                        <TableColumn fx:id="aGehaltCol1" minWidth="15.0" prefWidth="81.5999755859375" text="9.Gehalt" />
                      </columns>
                   </TableView>
                   <TextField fx:id="txt_vorname1" layoutX="295.0" layoutY="25.0" promptText="Vorname">
@@ -148,6 +158,15 @@
                      <tooltip>
                         <Tooltip fx:id="ttgehalt1" text="Gehalt" />
                      </tooltip></TextField>
+                  <Text layoutX="285.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." />
+                  <Text layoutX="285.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." />
+                  <Text layoutX="285.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." />
+                  <Text layoutX="457.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." />
+                  <Text layoutX="457.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." />
+                  <Text layoutX="457.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6." />
+                  <Text layoutX="626.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7." />
+                  <Text layoutX="626.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8." />
+                  <Text layoutX="626.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9." />
                </children>
             </AnchorPane>
         </content>
@@ -158,12 +177,12 @@
                <children>
                   <TableView fx:id="kundeTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected3" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn fx:id="aVornameCol2" prefWidth="106.39999198913574" text="Vorname" />
-                        <TableColumn fx:id="aNachnameCol2" prefWidth="113.5999526977539" text="Nachname" />
-                        <TableColumn fx:id="aTcNrCol2" prefWidth="153.60003662109375" text="TC-Nummer" />
-                        <TableColumn fx:id="aGeburtstagCol2" prefWidth="120.0" text="Geburtstag" />
-                        <TableColumn fx:id="aTelefonnummerCol2" prefWidth="164.79998779296875" text="Telefonnummer" />
-                        <TableColumn fx:id="aAdresseCol" prefWidth="275.20001220703125" text="Adresse" />
+                        <TableColumn fx:id="aVornameCol2" prefWidth="106.39999198913574" text="1.Vorname" />
+                        <TableColumn fx:id="aNachnameCol2" prefWidth="113.5999526977539" text="2.Nachname" />
+                        <TableColumn fx:id="aTcNrCol2" prefWidth="153.60003662109375" text="3.TC-Nummer" />
+                        <TableColumn fx:id="aGeburtstagCol2" prefWidth="120.0" text="4.Geburtstag" />
+                        <TableColumn fx:id="aTelefonnummerCol2" prefWidth="164.79998779296875" text="5.Telefonnummer" />
+                        <TableColumn fx:id="aAdresseCol" prefWidth="275.20001220703125" text="6.Adresse" />
                      </columns>
                   </TableView>
                   <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addKunde" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -205,6 +224,12 @@
                      <tooltip>
                         <Tooltip fx:id="ttadresse" text="Adresse" />
                      </tooltip></TextField>
+                  <Text layoutX="285.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." />
+                  <Text layoutX="285.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." />
+                  <Text layoutX="285.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." />
+                  <Text layoutX="457.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." />
+                  <Text layoutX="457.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." />
+                  <Text layoutX="457.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6." />
                </children>
             </AnchorPane>
          </content>
@@ -215,11 +240,11 @@
                <children>
                   <TableView fx:id="produktTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected4" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn fx:id="aModellnameCol" prefWidth="187.99999713897705" text="Modellname" />
-                        <TableColumn fx:id="aPreisCol" prefWidth="165.59996032714844" text="Preis" />
-                        <TableColumn fx:id="aFarbeCol" prefWidth="149.60003662109375" text="Farbe" />
-                        <TableColumn fx:id="aProduktcodeCol" prefWidth="246.4000244140625" text="Produktcode" />
-                        <TableColumn fx:id="aGarantieCol" prefWidth="185.60003662109375" text="Garantie" />
+                        <TableColumn fx:id="aModellnameCol" prefWidth="187.99999713897705" text="1.Modellname" />
+                        <TableColumn fx:id="aPreisCol" prefWidth="165.59996032714844" text="2.Preis" />
+                        <TableColumn fx:id="aFarbeCol" prefWidth="149.60003662109375" text="3.Farbe" />
+                        <TableColumn fx:id="aProduktcodeCol" prefWidth="246.4000244140625" text="4.Produktcode" />
+                        <TableColumn fx:id="aGarantieCol" prefWidth="185.60003662109375" text="5.Garantie" />
                      </columns>
                   </TableView>
                   <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addGeraete" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -257,6 +282,11 @@
                      <tooltip>
                         <Tooltip fx:id="ttgarantie" text="Garantie" />
                      </tooltip></TextField>
+                  <Text layoutX="285.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." />
+                  <Text layoutX="285.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." />
+                  <Text layoutX="285.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." />
+                  <Text layoutX="457.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." />
+                  <Text layoutX="457.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." />
                </children>
             </AnchorPane>
          </content>
@@ -267,9 +297,9 @@
                <children>
                   <TableView fx:id="rechnungTable" layoutX="5.0" layoutY="185.0" onMouseClicked="#getSelected5" prefHeight="291.0" prefWidth="935.0" style="-fx-background-color: #b1b1b1;">
                      <columns>
-                        <TableColumn fx:id="aRechnungNoCol" prefWidth="293.59998178482056" text="Rechnung-No" />
-                        <TableColumn fx:id="aProduktCol" prefWidth="345.5999755859375" text="Produktcode" />
-                        <TableColumn fx:id="aKundeCol" prefWidth="296.00006103515625" text="TC-Nummer von Kunde" />
+                        <TableColumn fx:id="aRechnungNoCol" prefWidth="293.59998178482056" text="1.Rechnung-No" />
+                        <TableColumn fx:id="aProduktCol" prefWidth="345.5999755859375" text="2.Produktcode" />
+                        <TableColumn fx:id="aKundeCol" prefWidth="296.00006103515625" text="3.TC-Nummer von Kunde" />
                      </columns>
                   </TableView>
                   <Button layoutX="6.0" layoutY="142.0" mnemonicParsing="false" onAction="#addRechnung" style="-fx-border-color: gray; -fx-background-color: green;" text="Hinzufügen">
@@ -294,6 +324,9 @@
                      <tooltip>
                         <Tooltip fx:id="tttcnrkunde" text="TC-Nr von Kunde" />
                      </tooltip></TextField>
+                  <Text layoutX="182.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." />
+                  <Text layoutX="182.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." />
+                  <Text layoutX="182.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." />
                </children>
             </AnchorPane>
          </content>

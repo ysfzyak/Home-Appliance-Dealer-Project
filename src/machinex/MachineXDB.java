@@ -12,6 +12,7 @@ import machinex.models.Geraete;
 import machinex.models.Kunde;
 import machinex.models.Rechnung;
 import machinex.models.ServicePersonal;
+import machinex.models.Servicebericht;
 
 /**
  *
@@ -134,6 +135,22 @@ public class MachineXDB {
             System.out.println(e);
         }
         return alist4;
+    }
+    
+    public static ObservableList<Servicebericht> getDataServicebericht(){
+        ObservableList<Servicebericht> alist5 = FXCollections.observableArrayList();
+        try{
+            PreparedStatement ps = con1.prepareStatement("SELECT * FROM servicebericht");
+            ResultSet rs5 = ps.executeQuery();
+            while (rs5.next()){   
+                alist5.add(new Servicebericht(rs5.getString("serviceberichtno"), 
+                        rs5.getString("produkt1"), 
+                        rs5.getString("kunde1")));               
+            }
+        }catch(NumberFormatException | SQLException e){
+            System.out.println(e);
+        }
+        return alist5;
     }
     
 }

@@ -18,8 +18,6 @@ import java.util.Date;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import javafx.scene.input.MouseEvent;
@@ -112,131 +110,67 @@ public class ManagerScreenController implements Initializable {
     @FXML 
     private TextField txt_vorname;
     @FXML
-    private Tooltip ttvorname;
-    @FXML
     private TextField txt_nachname;
-    @FXML
-    private Tooltip ttnachname;
     @FXML
     private TextField txt_tcnummer;
     @FXML
-    private Tooltip tttcnummer;
-    @FXML
     private TextField txt_geburtstag;
-    @FXML
-    private Tooltip ttgeburtstag;
     @FXML
     private TextField txt_telefonnummer;
     @FXML
-    private Tooltip tttelefonnummer;
-    @FXML
     private TextField txt_benutzername;
-    @FXML
-    private Tooltip ttbenutzername;
     @FXML
     private TextField txt_passwort;
     @FXML
-    private Tooltip ttpasswort;
-    @FXML
     private TextField txt_geschlecht;
-    @FXML
-    private Tooltip ttgeschlecht;
     @FXML
     private TextField txt_gehalt;
     @FXML
-    private Tooltip ttgehalt;
-    @FXML
     private TextField txt_vorname1;
-    @FXML
-    private Tooltip ttvorname1;
     @FXML
     private TextField txt_nachname1;
     @FXML
-    private Tooltip ttnachname1;
-    @FXML
     private TextField txt_tcnummer1;
-    @FXML
-    private Tooltip tttcnummer1;
     @FXML
     private TextField txt_geburtstag1;
     @FXML
-    private Tooltip ttgeburtstag1;
-    @FXML
     private TextField txt_telefonnummer1;
-    @FXML
-    private Tooltip tttelefonnummer1;
     @FXML
     private TextField txt_benutzername1;
     @FXML
-    private Tooltip ttbenutzername1;
-    @FXML
     private TextField txt_passwort1;
-    @FXML
-    private Tooltip ttpasswort1;
     @FXML
     private TextField txt_geschlecht1;
     @FXML
-    private Tooltip ttgeschlecht1;
-    @FXML
     private TextField txt_gehalt1;
-    @FXML
-    private Tooltip ttgehalt1;
     @FXML
     private TextField txt_vorname2;
     @FXML
-    private Tooltip ttvorname2;
-    @FXML
     private TextField txt_nachname2;
-    @FXML
-    private Tooltip ttnachname2;
     @FXML
     private TextField txt_tcnummer2;
     @FXML
-    private Tooltip tttcnummer2;
-    @FXML
     private TextField txt_geburtstag2;
-    @FXML
-    private Tooltip ttgeburtstag2;
     @FXML
     private TextField txt_telefonnummer2;
     @FXML
-    private Tooltip tttelefonnummer2;
-    @FXML
     private TextField txt_adresse;
-    @FXML
-    private Tooltip ttadresse;
     @FXML
     private TextField txt_modellname;
     @FXML
-    private Tooltip ttmodellname;
-    @FXML
     private TextField txt_preis;
-    @FXML
-    private Tooltip ttpreis;
     @FXML
     private TextField txt_farbe;
     @FXML
-    private Tooltip ttfarbe;
-    @FXML
     private TextField txt_produktcode;
-    @FXML
-    private Tooltip ttproduktcode;
     @FXML
     private TextField txt_garantie;
     @FXML
-    private Tooltip ttgarantie;
-    @FXML
     private TextField txt_rechnungno;
-    @FXML
-    private Tooltip ttrechnungno;
     @FXML
     private TextField txt_produktcode1;
     @FXML
-    private Tooltip ttproduktcode1;
-    @FXML
     private TextField txt_tcnrkunde;
-    @FXML
-    private Tooltip tttcnrkunde;
 
     ObservableList<Aussendienstmitarbeiter> list1;
     ObservableList<ServicePersonal> list2;
