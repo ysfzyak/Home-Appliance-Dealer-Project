@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package machinex;
 
 import java.awt.HeadlessException;
@@ -342,7 +337,7 @@ public class MitarbeiterScreenController implements Initializable {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Hinzufügen nicht möglich!");
-            alert.setContentText("Produktcode oder TC Nummer ist falsch!");
+            alert.setContentText("Die TC-Nummer oder der Produktcode wurde möglicherweise falsch eingegeben oder eines der Felder ist leer!");
             alert.showAndWait();
             
         }else{

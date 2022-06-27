@@ -56,7 +56,7 @@ public class ServicePersonalScreenController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Hinzufügen nicht möglich!");
-            alert.setContentText("Produktcode oder TC Nummer ist falsch!");
+            alert.setContentText("Die TC-Nummer oder der Produktcode wurde möglicherweise falsch eingegeben oder eines der Felder ist leer!");
             alert.showAndWait();
             
         }else{

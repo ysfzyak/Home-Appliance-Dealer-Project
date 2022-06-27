@@ -293,10 +293,19 @@ public class ManagerScreenController implements Initializable {
     }
     
     public void addRechnung(){
-        if(checkKunde() == true && checkProdukt() == true){
+        
+        if(checkKunde() != true || checkProdukt() != true){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setContentText("Die TC-Nummer oder der Produktcode wurde möglicherweise falsch eingegeben oder eines der Felder ist leer!");
+            alert.showAndWait();
+            
+        }else{
+            
             con1 = MachineXDB.connect();
             String sql = "INSERT INTO rechnung(rechnungno,produkt,kunde)values(?,?,?)";
-            
+        
             try{
                 pst = con1.prepareStatement(sql);
                 pst.setString(1, txt_rechnungno.getText());
@@ -307,14 +316,14 @@ public class ManagerScreenController implements Initializable {
                 
                 JOptionPane.showMessageDialog(null, "Rechnung wird hinzugefügt!");
                 updateTable5();
-            
-        }catch(HeadlessException | SQLException e){
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Hinzufügen nicht möglich!");
-            alert.setContentText("Bitte füllen Sie alle Felder aus");
-            alert.showAndWait();
-        }
+              
+            }catch(HeadlessException | SQLException e){
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Hinzufügen nicht möglich!");
+                alert.setContentText("Bitte füllen Sie alle Felder aus");
+                alert.showAndWait();
+            }
         }
     }
     
