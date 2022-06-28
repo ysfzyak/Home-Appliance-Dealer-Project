@@ -447,7 +447,7 @@ public class ManagerScreenController implements Initializable {
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
             
@@ -470,7 +470,7 @@ public class ManagerScreenController implements Initializable {
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
             
@@ -490,7 +490,7 @@ public class ManagerScreenController implements Initializable {
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
             
@@ -509,7 +509,7 @@ public class ManagerScreenController implements Initializable {
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
             

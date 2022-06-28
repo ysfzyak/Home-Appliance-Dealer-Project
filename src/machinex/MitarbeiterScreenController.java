@@ -185,7 +185,7 @@ public class MitarbeiterScreenController implements Initializable {
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
             
@@ -242,7 +242,7 @@ public class MitarbeiterScreenController implements Initializable {
         }catch(HeadlessException | SQLException e){
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Hinzufügen nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
         }
@@ -311,7 +311,7 @@ public class MitarbeiterScreenController implements Initializable {
             
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Aktualisieren nicht möglich!");
+            alert.setHeaderText("Aktualisieren/Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
             
