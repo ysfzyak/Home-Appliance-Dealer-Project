@@ -104,6 +104,7 @@ public class MitarbeiterScreenController implements Initializable {
     PreparedStatement pst = null;
     
     public void addKunde(){
+        if(checkEmpty1()){
         con1 = MachineXDB.connect();
         String sql = "INSERT INTO kunde(vorname,nachname,tcnummer,geburtstag,telefonnummer,adresse)values(?,?,?,?,?,?)";
         try{
@@ -126,6 +127,7 @@ public class MitarbeiterScreenController implements Initializable {
             alert.setHeaderText("Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
+        }
         }
     }
     
@@ -221,6 +223,7 @@ public class MitarbeiterScreenController implements Initializable {
     }
     
     public void addGeraete(){
+        if(checkEmpty2()){
         con1 = MachineXDB.connect();
         String sql = "INSERT INTO geraete(modellname,preis,farbe,produktcode,garantie)values(?,?,?,?,?)";
         try{
@@ -242,6 +245,7 @@ public class MitarbeiterScreenController implements Initializable {
             alert.setHeaderText("Hinzufügen nicht möglich!");
             alert.setContentText("Bitte füllen Sie alle Felder aus");
             alert.showAndWait();
+        }
         }
     }
     
